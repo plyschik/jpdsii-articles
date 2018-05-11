@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/dashboard/signin', 'Dashboard\SigninController@showLoginForm')->name('dashboard.signin');
-Route::post('/dashboard/signin', 'Dashboard\SigninController@login')->name('dashboard.signin');
-Route::post('/dashboard/signout', 'Dashboard\SigninController@logout')->name('dashboard.signout');
+Route::get('/dashboard/signin', 'Dashboard\SigninController@signinForm')->name('dashboard.signin');
+Route::post('/dashboard/signin', 'Dashboard\SigninController@signin')->name('dashboard.signin');
+Route::post('/dashboard/signout', 'Dashboard\SigninController@signout')->name('dashboard.signout');
 
 Route::get('/', function () {
     return view('site.index');
@@ -30,5 +30,7 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/signin', function () {
     return view('dashboard.signin');
-})->middleware('guest');
+})
+    ->middleware('guest')
+;
 
