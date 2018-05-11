@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Title</title>
+        <title>{{ config('app.name') }}</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
@@ -28,13 +28,13 @@
             <div class="login-box-body">
                 <form action="{{ route('dashboard.signin') }}" method="post">
                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                        <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+                        <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="{{ __('messages.dashboard.signin.form.email') }}">
                         @if ($errors->has('email'))
                             <span class="help-block">{{ $errors->first('email') }}</span>
                         @endif
                     </div>
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <input class="form-control" type="password" name="password" placeholder="Password">
+                        <input class="form-control" type="password" name="password" placeholder="{{ __('messages.dashboard.signin.form.password') }}">
                         @if ($errors->has('password'))
                             <span class="help-block">{{ $errors->first('password') }}</span>
                         @endif
@@ -43,12 +43,12 @@
                         <div class="col-xs-8">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="remember"{{ old('remember') ? ' checked' : '' }}> Remember Me
+                                    <input type="checkbox" name="remember"{{ old('remember') ? ' checked' : '' }}> {{ __('messages.dashboard.signin.form.remember') }}
                                 </label>
                             </div>
                         </div>
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                            <button type="submit" class="btn btn-primary btn-block">{{ __('messages.dashboard.signin.form.signin') }}</button>
                         </div>
                     </div>
                     @csrf

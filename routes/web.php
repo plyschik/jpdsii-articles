@@ -17,7 +17,9 @@ Route::post('/dashboard/signout', 'Dashboard\SigninController@logout')->name('da
 
 Route::get('/', function () {
     return view('site.index');
-});
+})
+    ->name('articles.index')
+;
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
