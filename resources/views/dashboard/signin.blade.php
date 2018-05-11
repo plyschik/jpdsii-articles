@@ -26,22 +26,24 @@
                 <a href="#"><b>JPDSII</b> Articles</a>
             </div>
             <div class="login-box-body">
-                <!--<div class="callout callout-warning">
-                    <h4>Title</h4>
-                    <p>Content</p>
-                </div>-->
-                <form action="#" method="post">
-                    <div class="form-group has-feedback">
-                        <input type="email" class="form-control" placeholder="Email">
+                <form action="{{ route('dashboard.signin') }}" method="post">
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input class="form-control" type="email" name="email" value="{{ old('email') }}" placeholder="Email">
+                        @if ($errors->has('email'))
+                            <span class="help-block">{{ $errors->first('email') }}</span>
+                        @endif
                     </div>
-                    <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Password">
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input class="form-control" type="password" name="password" placeholder="Password">
+                        @if ($errors->has('password'))
+                            <span class="help-block">{{ $errors->first('password') }}</span>
+                        @endif
                     </div>
                     <div class="row">
                         <div class="col-xs-8">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> Remember Me
+                                    <input type="checkbox" name="remember"{{ old('remember') ? ' checked' : '' }}> Remember Me
                                 </label>
                             </div>
                         </div>
@@ -49,6 +51,7 @@
                             <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
                         </div>
                     </div>
+                    @csrf
                 </form>
             </div>
         </div>

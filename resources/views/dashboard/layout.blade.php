@@ -57,7 +57,10 @@
                                     </li>
                                     <li class="user-footer">
                                         <div class="pull-right">
-                                            <a href="#" class="btn btn-default btn-flat">Button</a>
+                                            <form action="{{ route('dashboard.signout') }}" method="POST">
+                                                <input class="btn btn-default btn-flat" type="submit" value="Logout" />
+                                                @csrf
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
