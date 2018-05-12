@@ -44,6 +44,7 @@
                                     <li class="user-header">
                                         <img src="{{ asset('images/noavatar.png') }}" class="img-circle" alt="User Image">
                                         <p>{{ Auth::user()->fullName }}</p>
+                                        <p>{{ Auth::user()->getRoleNames()->first() }}</p>
                                     </li>
                                     <!--<li class="user-body">
                                         <div class="row">

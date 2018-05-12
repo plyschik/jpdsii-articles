@@ -2,7 +2,6 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,10 +13,17 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'email'         => 'peter@smith',
+            'email'         => 'p.smith@mx.net',
             'first_name'    => 'Peter',
             'last_name'     => 'Smith',
-            'password'      => Hash::make('password')
-        ]);
+            'password'      => bcrypt('password')
+        ])->assignRole('editor');
+
+        User::create([
+            'email'         => 'j.taylor@mx.net',
+            'first_name'    => 'John',
+            'last_name'     => 'Taylor',
+            'password'      => bcrypt('password')
+        ])->assignRole('administrator');
     }
 }
