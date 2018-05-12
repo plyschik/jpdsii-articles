@@ -9,7 +9,7 @@ class ArticlesController extends Controller
     public function list()
     {
         return view('site.articles.list', [
-            'articles' => Article::with('user')->paginate(10)
+            'articles' => Article::with('user')->orderByDesc('created_at')->paginate(10)
         ]);
     }
 

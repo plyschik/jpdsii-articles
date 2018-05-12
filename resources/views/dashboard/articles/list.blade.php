@@ -32,7 +32,7 @@
                                     <td>{{ $article->created_at }}</td>
                                     <td>{{ $article->updated_at }}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a class="btn btn-primary" href="{{ route('dashboard.articles.edit', ['id' => $article->id]) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                                     </td>
                                     <td class="text-center">
                                         <form class="delete-form" action="{{ route('dashboard.articles.delete', ['id' => $article->id]) }}" method="POST">

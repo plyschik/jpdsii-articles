@@ -88,7 +88,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('dashboard.articles.list') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.list') }}</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.add') }}</a></li>
+                                <li><a href="{{ route('dashboard.articles.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.add') }}</a></li>
                             </ul>
                         </li>
                     </ul>

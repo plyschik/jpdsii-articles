@@ -23,15 +23,15 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('pass
 Route::get('/', 'ArticlesController@list')->name('front.articles.list');
 Route::get('/article/{id}', 'ArticlesController@show')->name('front.articles.show');
 
-Route::group(['prefix' => 'dashboard'], function () {
+Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('dashboard.index');
-    })
-        ->name('dashboard.index')
-        ->middleware('auth')
-    ;
+    })->name('dashboard.index');
 
     Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');
-
+    Route::get('/articles/create', 'Dashboard\ArticlesController@create')->name('dashboard.articles.create');
+    Route::post('/articles/create', 'Dashboard\ArticlesController@store')->name('dashboard.articles.create');
+    Route::get('/articles/edit/{id}', 'Dashboard\ArticlesController@edit')->name('dashboard.articles.edit');
+    Route::post('/articles/edit/{id}', 'Dashboard\ArticlesController@update')->name('dashboard.articles.edit');
     Route::delete('/articles/{id}', 'Dashboard\ArticlesController@delete')->name('dashboard.articles.delete');
 });
