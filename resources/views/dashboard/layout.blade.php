@@ -15,11 +15,16 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <style>
+            .pagination {
+                margin: 0 !important;
+            }
+        </style>
     </head>
     <body class="hold-transition skin-blue fixed sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                <a href="#" class="logo">
+                <a href="{{ route('dashboard.index') }}" class="logo">
                     <span class="logo-mini"></span>
                     <span class="logo-lg"><b>JPDSII</b> Articles</span>
                 </a>
@@ -78,36 +83,19 @@
                     <ul class="sidebar-menu" data-widget="tree">
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-th"></i> <span>Dashboard</span>
-                                <span class="pull-right-container">
-                                            <i class="fa fa-angle-left pull-right"></i>
-                                        </span>
+                                <i class="fa fa-th"></i> <span>{{ __('messages.dashboard.menu.articles.header') }}</span>
+                                <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Link</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Link</a></li>
+                                <li><a href="{{ route('dashboard.articles.list') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.list') }}</a></li>
+                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.add') }}</a></li>
                             </ul>
                         </li>
                     </ul>
                 </section>
             </aside>
             <div class="content-wrapper">
-                <section class="content-header">
-                    <h1>Dashboard</h1>
-                </section>
-                <section class="content">
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h3 class="box-title">Title</h3>
-                        </div>
-                        <div class="box-body">
-                            Content
-                        </div>
-                        <div class="box-footer">
-                            Footer
-                        </div>
-                    </div>
-                </section>
+                @yield('content')
             </div>
         </div>
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>

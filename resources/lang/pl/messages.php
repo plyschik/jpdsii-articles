@@ -37,6 +37,40 @@ return [
         'navbar' => [
             'mainpage' => 'Strona głowna',
             'signout' => 'Wyloguj się'
+        ],
+        'menu' => [
+            'articles' => [
+                'header' => 'Artykuły',
+                'list' => 'Lista artykułów',
+                'add' => 'Dodaj artykuł'
+            ]
+        ],
+        'articles' => [
+            'list' => [
+                'callouts' => [
+                    'noarticles' => [
+                        'header' => 'Lista artykułów',
+                        'paragraph' => 'Brak artykułów do wyświetlenia.',
+                        'link' => 'Dodaj pierwszy artykuł!'
+                    ]
+                ],
+                'headers' => [
+                    'articles_list' => 'Lista artykułów'
+                ],
+                'table' => [
+                    'headers' => [
+                        'id' => 'ID',
+                        'author' => 'Autor',
+                        'title' => 'Tytuł',
+                        'created_at' => 'Utworzono',
+                        'updated_at' => 'Zaktualizowano'
+                    ],
+                    'actions' => [
+                        'edit' => 'Edytuj',
+                        'delete' => 'Usuń'
+                    ]
+                ]
+            ]
         ]
     ]
 ];

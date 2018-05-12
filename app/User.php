@@ -32,4 +32,9 @@ class User extends Authenticatable
     {
         return sprintf('%s %s', $this->first_name, $this->last_name);
     }
+
+    public function articles()
+    {
+        return $this->hasMany('App\Article');
+    }
 }
