@@ -16,7 +16,7 @@
                 <div class="collapse navbar-collapse" id="navbarToggler">
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="{{ Auth::user() ? route('dashboard.index') : route('dashboard.signin') }}">{{ __('messages.site.navbar.dashboard') }}</a>
                         </li>
                     </ul>
                 </div>
