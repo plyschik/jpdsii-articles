@@ -31,6 +31,9 @@ return [
     'site' => [
         'navbar' => [
             'dashboard' => 'Dashboard'
+        ],
+        'alerts' => [
+            'no_articles' => 'No articles to display.'
         ]
     ],
     'dashboard' => [

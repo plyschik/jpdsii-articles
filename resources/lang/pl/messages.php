@@ -31,6 +31,9 @@ return [
     'site' => [
         'navbar' => [
             'dashboard' => 'Panel administracyjny'
+        ],
+        'alerts' => [
+            'no_articles' => 'Brak artykułow do wyświetlenia.'
         ]
     ],
     'dashboard' => [

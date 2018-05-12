@@ -4,7 +4,9 @@
     <div class="row">
         <div class="col-lg-8">
             @if (!$articles)
-                Ni ma.
+                <div class="alert alert-info">
+                    {{ __('messages.site.alerts.no_articles') }}
+                </div>
             @else
                 @foreach ($articles as $article)
                     <div class="card mb-3">
