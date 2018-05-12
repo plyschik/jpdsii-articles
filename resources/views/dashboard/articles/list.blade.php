@@ -31,8 +31,8 @@
                                     <td>{{ $article->created_at }}</td>
                                     <td>{{ $article->updated_at }}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary" href="#">{{ __('messages.dashboard.articles.list.table.actions.edit') }}</a>
-                                        <a class="btn btn-danger" href="#">{{ __('messages.dashboard.articles.list.table.actions.delete') }}</a>
+                                        <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a class="btn btn-danger" href="#"><span class="glyphicon glyphicon-trash"></span></a>
                                     </td>
                                 </tr>
                             @endforeach

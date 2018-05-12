@@ -20,28 +20,16 @@ Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail
 Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
+Route::get('/', 'ArticlesController@list')->name('front.articles.list');
+Route::get('/article/{id}', 'ArticlesController@show')->name('front.articles.show');
+
 Route::group(['prefix' => 'dashboard'], function () {
-    Route::get('/articles', 'Dashboard\ArticlesController@list')
-        ->name('dashboard.articles.list')
+    Route::get('/', function () {
+        return view('dashboard.index');
+    })
+        ->name('dashboard.index')
+        ->middleware('auth')
     ;
+
+    Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');
 });
-
-Route::get('/', function () {
-    return view('site.index');
-})
-    ->name('articles.index')
-;
-
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})
-    ->name('dashboard.index')
-    ->middleware('auth')
-;
-
-Route::get('/dashboard/signin', function () {
-    return view('dashboard.signin');
-})
-    ->middleware('guest')
-;
-

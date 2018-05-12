@@ -64,10 +64,6 @@ return [
                         'title' => 'Tytuł',
                         'created_at' => 'Utworzono',
                         'updated_at' => 'Zaktualizowano'
-                    ],
-                    'actions' => [
-                        'edit' => 'Edytuj',
-                        'delete' => 'Usuń'
                     ]
                 ]
             ]

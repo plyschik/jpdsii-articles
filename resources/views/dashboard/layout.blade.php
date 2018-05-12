@@ -38,7 +38,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="{{ route('articles.index') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
+                                <a href="{{ route('front.articles.list') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
                             </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
