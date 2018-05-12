@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +20,7 @@ class SigninController extends Controller
 
     public function signinForm()
     {
-        return view('dashboard.signin');
+        return view('auth.signin');
     }
 
     public function signin(Request $request)
