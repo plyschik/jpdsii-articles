@@ -15,4 +15,11 @@ class ArticlesController extends Controller
             'articles' => $articles
         ]);
     }
+
+    public function delete($id)
+    {
+        Article::findOrFail($id)->delete();
+
+        return back();
+    }
 }

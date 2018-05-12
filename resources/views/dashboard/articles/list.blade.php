@@ -22,6 +22,7 @@
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.created_at') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.updated_at') }}</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             @foreach($articles as $article)
                                 <tr>
@@ -32,7 +33,15 @@
                                     <td>{{ $article->updated_at }}</td>
                                     <td class="text-center">
                                         <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <a class="btn btn-danger" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <form class="delete-form" action="{{ route('dashboard.articles.delete', ['id' => $article->id]) }}" method="POST">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn btn-danger" type="submit">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

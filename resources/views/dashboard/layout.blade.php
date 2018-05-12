@@ -98,6 +98,19 @@
                 @yield('content')
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var deleteButtons = document.querySelectorAll('.delete-form');
+
+                for (var i = 0; i < deleteButtons.length; i++) {
+                    deleteButtons[i].addEventListener('submit', function (event) {
+                        if (!confirm('Potwierdź usunięcie artykułu.')) {
+                            event.preventDefault();
+                        }
+                    });
+                }
+            });
+        </script>
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
         <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>

@@ -32,4 +32,6 @@ Route::group(['prefix' => 'dashboard'], function () {
     ;
 
     Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');
+
+    Route::delete('/articles/{id}', 'Dashboard\ArticlesController@delete')->name('dashboard.articles.delete');
 });
