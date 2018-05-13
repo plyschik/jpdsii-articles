@@ -1,5 +1,14 @@
 @extends('dashboard.layout')
 
+@section('stylesheets')
+    @parent
+    <style>
+        .pagination {
+            margin: 0 !important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="content">
         @if (!$articles)
@@ -52,4 +61,21 @@
             {{ $articles->links() }}
         @endif
     </section>
+@endsection
+
+@section('javascripts')
+    @parent
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var deleteButtons = document.querySelectorAll('.delete-form');
+
+            for (var i = 0; i < deleteButtons.length; i++) {
+                deleteButtons[i].addEventListener('submit', function (event) {
+                    if (!confirm('{{ __('messages.dashboard.articles.list.alert.delete_confirm') }}')) {
+                        event.preventDefault();
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

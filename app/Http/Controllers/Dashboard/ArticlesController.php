@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Article;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreArticle;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ArticlesController extends Controller
 {
@@ -20,7 +20,13 @@ class ArticlesController extends Controller
 
     public function delete($id)
     {
-        Article::findOrFail($id)->delete();
+        try {
+            Article::findOrFail($id)->delete();
+        } catch (ModelNotFoundException $exception) {
+            abort(404, 'Article not found.');
+        } catch (\Exception $exception) {
+            abort(500, $exception->getMessage());
+        }
 
         return back();
     }
@@ -32,10 +38,14 @@ class ArticlesController extends Controller
 
     public function store(StoreArticle $request)
     {
-        $request->user()->articles()->create([
+        $created = $request->user()->articles()->create([
             'title' => $request->get('title'),
             'content' => $request->get('content')
         ]);
+
+        if (!$created) {
+            abort(500, 'Article was not created.');
+        }
 
         return redirect()->route('dashboard.articles.list');
     }
@@ -49,10 +59,14 @@ class ArticlesController extends Controller
 
     public function update(StoreArticle $request, $id)
     {
-        Article::findOrFail($id)->update([
-            'title' => $request->get('title'),
-            'content' => $request->get('content')
-        ]);
+        try {
+            Article::findOrFail($id)->update([
+                'title' => $request->get('title'),
+                'content' => $request->get('content')
+            ]);
+        } catch (ModelNotFoundException $exception) {
+            abort(404, 'Article not found.');
+        }
 
         return redirect()->route('dashboard.articles.list');
     }

@@ -68,6 +68,25 @@ return [
                         'created_at' => 'Created at',
                         'updated_at' => 'Updated at'
                     ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Confirm article delete.'
+                ]
+            ],
+            'create' => [
+                'header' => 'New article',
+                'form' => [
+                    'title' => 'Title:',
+                    'content' => 'Content:',
+                    'submit' => 'Add new article'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Article edit',
+                'form' => [
+                    'title' => 'Title:',
+                    'content' => 'Content:',
+                    'submit' => 'Update article'
                 ]
             ]
         ]

@@ -68,6 +68,25 @@ return [
                         'created_at' => 'Utworzono',
                         'updated_at' => 'Zaktualizowano'
                     ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Potwierdź usunięcie artykułu.'
+                ]
+            ],
+            'create' => [
+                'header' => 'Nowy artykuł',
+                'form' => [
+                    'title' => 'Tytuł:',
+                    'content' => 'Treść:',
+                    'submit' => 'Dodaj artykuł'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Edycja artykułu',
+                'form' => [
+                    'title' => 'Tytuł:',
+                    'content' => 'Treść:',
+                    'submit' => 'Zaktualizuj artykuł'
                 ]
             ]
         ]
