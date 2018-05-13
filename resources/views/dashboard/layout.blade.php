@@ -5,21 +5,18 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{{ config('app.name') }}</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/dist/css/adminlte.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/dist/css/skins/_all-skins.min.css') }}">
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-        <style>
-            .pagination {
-                margin: 0 !important;
-            }
-        </style>
+        @section('stylesheets')
+            <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/dist/css/adminlte.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('bower_components/admin-lte/dist/css/skins/_all-skins.min.css') }}">
+            <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        @show
     </head>
     <body class="hold-transition skin-blue fixed sidebar-mini">
         <div class="wrapper">
@@ -38,7 +35,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="{{ route('articles.index') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
+                                <a href="{{ route('front.articles.list') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
                             </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -88,7 +85,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="{{ route('dashboard.articles.list') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.list') }}</a></li>
-                                <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.add') }}</a></li>
+                                <li><a href="{{ route('dashboard.articles.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.add') }}</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -98,10 +95,12 @@
                 @yield('content')
             </div>
         </div>
-        <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
-        <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
-        <script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js') }}"></script>
+        @section('javascripts')
+            <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+            <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+            <script src="{{ asset('bower_components/fastclick/lib/fastclick.js') }}"></script>
+            <script src="{{ asset('bower_components/admin-lte/dist/js/adminlte.min.js') }}"></script>
+        @show
     </body>
 </html>

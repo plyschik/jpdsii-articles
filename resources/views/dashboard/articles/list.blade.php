@@ -1,5 +1,14 @@
 @extends('dashboard.layout')
 
+@section('stylesheets')
+    @parent
+    <style>
+        .pagination {
+            margin: 0 !important;
+        }
+    </style>
+@endsection
+
 @section('content')
     <section class="content">
         @if (!$articles)
@@ -22,6 +31,7 @@
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.created_at') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.updated_at') }}</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             @foreach($articles as $article)
                                 <tr>
@@ -31,8 +41,16 @@
                                     <td>{{ $article->created_at }}</td>
                                     <td>{{ $article->updated_at }}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary" href="#">{{ __('messages.dashboard.articles.list.table.actions.edit') }}</a>
-                                        <a class="btn btn-danger" href="#">{{ __('messages.dashboard.articles.list.table.actions.delete') }}</a>
+                                        <a class="btn btn-primary" href="{{ route('dashboard.articles.edit', ['id' => $article->id]) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    </td>
+                                    <td class="text-center">
+                                        <form class="delete-form" action="{{ route('dashboard.articles.delete', ['id' => $article->id]) }}" method="POST">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn btn-danger" type="submit">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                            @csrf
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -43,4 +61,21 @@
             {{ $articles->links() }}
         @endif
     </section>
+@endsection
+
+@section('javascripts')
+    @parent
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var deleteButtons = document.querySelectorAll('.delete-form');
+
+            for (var i = 0; i < deleteButtons.length; i++) {
+                deleteButtons[i].addEventListener('submit', function (event) {
+                    if (!confirm('{{ __('messages.dashboard.articles.list.alert.delete_confirm') }}')) {
+                        event.preventDefault();
+                    }
+                });
+            }
+        });
+    </script>
 @endsection

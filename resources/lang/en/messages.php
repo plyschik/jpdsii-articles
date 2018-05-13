@@ -31,6 +31,9 @@ return [
     'site' => [
         'navbar' => [
             'dashboard' => 'Dashboard'
+        ],
+        'alerts' => [
+            'no_articles' => 'No articles to display.'
         ]
     ],
     'dashboard' => [
@@ -64,11 +67,26 @@ return [
                         'title' => 'Title',
                         'created_at' => 'Created at',
                         'updated_at' => 'Updated at'
-                    ],
-                    'actions' => [
-                        'edit' => 'Edit',
-                        'delete' => 'Delete'
                     ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Confirm article delete.'
+                ]
+            ],
+            'create' => [
+                'header' => 'New article',
+                'form' => [
+                    'title' => 'Title:',
+                    'content' => 'Content:',
+                    'submit' => 'Add new article'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Article edit',
+                'form' => [
+                    'title' => 'Title:',
+                    'content' => 'Content:',
+                    'submit' => 'Update article'
                 ]
             ]
         ]

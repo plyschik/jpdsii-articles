@@ -124,9 +124,16 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'title' => [
+            'required'  => 'Tytuł jest wymagany.',
+            'min'       => 'Tytuł powinien mieć minimalnie :min znaków.',
+            'max'       => 'Tytuł powinieć mieć maksymalnie :max znaków.'
         ],
+        'content' => [
+            'required'  => 'Treść jest wymagana.',
+            'min'       => 'Treść powinna mieć minimalnie :min znaków.',
+            'max'       => 'Treść powinna mieć maksymalnie :max znaków.'
+        ]
     ],
 
     /*

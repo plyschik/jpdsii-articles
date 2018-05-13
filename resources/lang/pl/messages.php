@@ -31,6 +31,9 @@ return [
     'site' => [
         'navbar' => [
             'dashboard' => 'Panel administracyjny'
+        ],
+        'alerts' => [
+            'no_articles' => 'Brak artykułow do wyświetlenia.'
         ]
     ],
     'dashboard' => [
@@ -64,11 +67,26 @@ return [
                         'title' => 'Tytuł',
                         'created_at' => 'Utworzono',
                         'updated_at' => 'Zaktualizowano'
-                    ],
-                    'actions' => [
-                        'edit' => 'Edytuj',
-                        'delete' => 'Usuń'
                     ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Potwierdź usunięcie artykułu.'
+                ]
+            ],
+            'create' => [
+                'header' => 'Nowy artykuł',
+                'form' => [
+                    'title' => 'Tytuł:',
+                    'content' => 'Treść:',
+                    'submit' => 'Dodaj artykuł'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Edycja artykułu',
+                'form' => [
+                    'title' => 'Tytuł:',
+                    'content' => 'Treść:',
+                    'submit' => 'Zaktualizuj artykuł'
                 ]
             ]
         ]
