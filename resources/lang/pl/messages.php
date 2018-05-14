@@ -41,7 +41,7 @@ return [
             'articles_from_user' => 'Artykuły użytkownika'
         ],
         'footer' => [
-            'article' => "Article added from: <a href=\":userRoute\">:user</a>, in category: <a href=\":categoryRoute\">:category</a>. Created at: :date."
+            'article' => "Artykuł dodany przez: <a href=\":userRoute\">:user</a>, w kategorii: <a href=\":categoryRoute\">:category</a>. Data dodania: :date."
         ]
     ],
     'dashboard' => [
