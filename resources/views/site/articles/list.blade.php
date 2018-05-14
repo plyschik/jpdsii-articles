@@ -14,7 +14,7 @@
                             <a href="{{ route('front.articles.show', ['id' => $article->id]) }}">
                                 <h5 class="card-title">{{ $article->title }}</h5>
                             </a>
-                            <p class="card-text">{{ str_limit($article->content, 256) }}</p>
+                            <p class="card-text text-justify">{{ Str::words($article->content, 64, '...') }}</p>
                             <p class="card-text"><small class="text-muted">Artykuł dodany przez: {{ $article->user->fullName }} dnia: {{ $article->created_at }}.</small></p>
                         </div>
                     </div>
