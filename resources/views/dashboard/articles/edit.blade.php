@@ -17,6 +17,14 @@
                                     <span class="help-block">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
+                            <div class="form-group">
+                                <label for="category">Kategoria:</label>
+                                <select class="form-control select2" id="category" name="category">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}"{{ $category->id == $article->category->id ? ' selected' : '' }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                                 <label for="exampleInputPassword1">{{ __('messages.dashboard.articles.edit.form.content') }}</label>
                                 <textarea class="form-control" id="contentInput" rows="6" name="content">{{ old('content', $article->content) }}</textarea>

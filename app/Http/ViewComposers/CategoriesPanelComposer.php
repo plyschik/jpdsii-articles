@@ -5,7 +5,7 @@ namespace App\Http\ViewComposers;
 use App\Category;
 use Illuminate\View\View;
 
-class CategoriesComposer
+class CategoriesPanelComposer
 {
     public function compose(View $view)
     {

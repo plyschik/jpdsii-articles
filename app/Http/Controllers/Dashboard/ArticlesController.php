@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Article;
+use App\Category;
 use App\Http\Requests\StoreArticle;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -38,12 +39,15 @@ class ArticlesController extends Controller
 
     public function store(StoreArticle $request)
     {
-        $created = $request->user()->articles()->create([
+        $article = new Article([
             'title' => $request->get('title'),
             'content' => $request->get('content')
         ]);
+        $article->user()->associate($request->user());
+        $article->category()->associate(Category::findOrFail($request->get('category')));
+        $article->save();
 
-        if (!$created) {
+        if (!$article) {
             abort(500, 'Article was not created.');
         }
 
@@ -60,7 +64,9 @@ class ArticlesController extends Controller
     public function update(StoreArticle $request, $id)
     {
         try {
-            Article::findOrFail($id)->update([
+            $article = Article::findOrFail($id);
+            $article->category()->associate(Category::findOrFail($request->get('category')));
+            $article->update([
                 'title' => $request->get('title'),
                 'content' => $request->get('content')
             ]);
