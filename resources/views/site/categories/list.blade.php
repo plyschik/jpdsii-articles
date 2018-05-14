@@ -3,6 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-lg-8">
+            <h2 class="mb-3">{{ __('messages.site.headers.articles_in_category') }}: {{ $articles->first()->category->name }}</h2>
             @if (!$articles)
                 <div class="alert alert-info">
                     {{ __('messages.site.alerts.no_articles') }}

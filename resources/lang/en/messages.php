@@ -34,6 +34,10 @@ return [
         ],
         'alerts' => [
             'no_articles' => 'No articles to display.'
+        ],
+        'headers' => [
+            'categories' => 'Categories',
+            'articles_in_category' => 'Articles in category'
         ]
     ],
     'dashboard' => [
@@ -46,6 +50,11 @@ return [
                 'header' => 'Articles',
                 'list' => 'Articles list',
                 'add' => 'Add article'
+            ],
+            'categories' => [
+                'header' => 'Categories',
+                'list' => 'Categories list',
+                'add' => 'Add category'
             ]
         ],
         'articles' => [
@@ -64,6 +73,7 @@ return [
                     'headers' => [
                         'id' => 'ID',
                         'author' => 'Author',
+                        'category' => 'Category',
                         'title' => 'Title',
                         'created_at' => 'Created at',
                         'updated_at' => 'Updated at'
@@ -87,6 +97,45 @@ return [
                     'title' => 'Title:',
                     'content' => 'Content:',
                     'submit' => 'Update article'
+                ]
+            ]
+        ],
+        'categories' => [
+            'list' => [
+                'callouts' => [
+                    'nocategories' => [
+                        'header' => 'List of categories',
+                        'paragraph' => 'No categories to show.',
+                        'link' => 'Add first category!'
+                    ]
+                ],
+                'headers' => [
+                    'articles_list' => 'Categories list'
+                ],
+                'table' => [
+                    'headers' => [
+                        'id' => 'ID',
+                        'name' => 'Name',
+                        'created_at' => 'Created at',
+                        'updated_at' => 'Updated at'
+                    ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Confirm category delete.'
+                ]
+            ],
+            'create' => [
+                'header' => 'New category',
+                'form' => [
+                    'name' => 'Name:',
+                    'submit' => 'Add category'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Category edit',
+                'form' => [
+                    'name' => 'Name:',
+                    'submit' => 'Update category'
                 ]
             ]
         ]

@@ -14,7 +14,7 @@
         @if (!$articles)
             <div class="callout callout-info">
                 <h4>{{ __('messages.dashboard.articles.list.callouts.noarticles.header') }}</h4>
-                <p>{{ __('messages.dashboard.articles.list.callouts.noarticles.paragraph') }} <a href="#">{{ __('messages.dashboard.articles.list.callouts.noarticles.link') }}</a></p>
+                <p>{{ __('messages.dashboard.articles.list.callouts.noarticles.paragraph') }} <a href="{{ route('dashboard.articles.create') }}">{{ __('messages.dashboard.articles.list.callouts.noarticles.link') }}</a></p>
             </div>
         @else
             <div class="box">
@@ -27,6 +27,7 @@
                             <tr>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.id') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.author') }}</th>
+                                <th>{{ __('messages.dashboard.articles.list.table.headers.category') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.title') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.created_at') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.updated_at') }}</th>
@@ -37,7 +38,8 @@
                                 <tr>
                                     <td>{{ $article->id }}</td>
                                     <td>{{ $article->user->fullName }}</td>
-                                    <td>{{ str_limit($article->title, 32) }}</td>
+                                    <td>{{ $article->category->name }}</td>
+                                    <td>{{ str_limit($article->title, 20) }}</td>
                                     <td>{{ $article->created_at }}</td>
                                     <td>{{ $article->updated_at }}</td>
                                     <td class="text-center">

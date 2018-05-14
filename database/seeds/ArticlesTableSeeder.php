@@ -12,11 +12,14 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = \Faker\Factory::create();
+
         for ($i = 0; $i < 100; $i++) {
             Article::create([
-                'user_id' => mt_rand(1, 2),
-                'title' => str_random(mt_rand(64, 128)),
-                'content' => str_random(1024)
+                'user_id'       => mt_rand(1, 2),
+                'category_id'   => mt_rand(1, 3),
+                'title'         => $faker->sentence(8),
+                'content'       => $faker->text(2048)
             ]);
         }
     }

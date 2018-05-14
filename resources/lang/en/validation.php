@@ -134,6 +134,11 @@ return [
             'required'  => 'Content is required.',
             'min'       => 'Content should have at least :min characters.',
             'max'       => 'Content should not have greater than :max characters.'
+        ],
+        'name' => [
+            'required'  => 'Name is required.',
+            'min'       => 'Name should have at least :min characters.',
+            'max'       => 'Name should not have greater than :max characters.'
         ]
     ],
 
