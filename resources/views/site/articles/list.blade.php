@@ -15,7 +15,7 @@
                                 <h5 class="card-title">{{ $article->title }}</h5>
                             </a>
                             <p class="card-text text-justify">{{ Str::words($article->content, 64, '...') }}</p>
-                            <p class="card-text"><small class="text-muted">Artykuł dodany przez: {{ $article->user->fullName }} dnia: {{ $article->created_at }}.</small></p>
+                            <p class="card-text"><small class="text-muted">Artykuł dodany przez: {{ $article->user->fullName }} dnia: {{ $article->created_at }} w kategorii: {{ $article->category->name }}.</small></p>
                         </div>
                     </div>
                 @endforeach
@@ -27,9 +27,9 @@
             <div class="card mb-3">
                 <div class="card-header">Categories</div>
                 <div class="list-group list-group-flush">
-                    <a href="" class="list-group-item list-group-item-action">item</a>
-                    <a href="" class="list-group-item list-group-item-action">item</a>
-                    <a href="" class="list-group-item list-group-item-action">item</a>
+                    @foreach ($categories as $category)
+                        <a href="#" class="list-group-item list-group-item-action">{{ $category->name }} ({{ $category->articles_count }})</a>
+                    @endforeach
                 </div>
             </div>
         </div>
