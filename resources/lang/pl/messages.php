@@ -50,6 +50,11 @@ return [
                 'header' => 'Artykuły',
                 'list' => 'Lista artykułów',
                 'add' => 'Dodaj artykuł'
+            ],
+            'categories' => [
+                'header' => 'Kategorie',
+                'list' => 'Lista kategorii',
+                'add' => 'Dodaj kategorię'
             ]
         ],
         'articles' => [
@@ -92,6 +97,45 @@ return [
                     'title' => 'Tytuł:',
                     'content' => 'Treść:',
                     'submit' => 'Zaktualizuj artykuł'
+                ]
+            ]
+        ],
+        'categories' => [
+            'list' => [
+                'callouts' => [
+                    'nocategories' => [
+                        'header' => 'Lista categorii',
+                        'paragraph' => 'Brak kategorii do wyświetlenia.',
+                        'link' => 'Dodaj pierwszy kategorię!'
+                    ]
+                ],
+                'headers' => [
+                    'articles_list' => 'Lista kategorii'
+                ],
+                'table' => [
+                    'headers' => [
+                        'id' => 'ID',
+                        'name' => 'Nazwa',
+                        'created_at' => 'Utworzono',
+                        'updated_at' => 'Zaktualizowano'
+                    ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Potwierdź usunięcie kategorii.'
+                ]
+            ],
+            'create' => [
+                'header' => 'Nowy kategoria',
+                'form' => [
+                    'name' => 'Nazwa:',
+                    'submit' => 'Dodaj kategorię'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Edycja kategorii',
+                'form' => [
+                    'name' => 'Nazwa:',
+                    'submit' => 'Zaktualizuj kategorię'
                 ]
             ]
         ]

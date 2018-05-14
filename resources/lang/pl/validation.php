@@ -133,6 +133,11 @@ return [
             'required'  => 'Treść jest wymagana.',
             'min'       => 'Treść powinna mieć minimalnie :min znaków.',
             'max'       => 'Treść powinna mieć maksymalnie :max znaków.'
+        ],
+        'name' => [
+            'required'  => 'Nazwa jest wymagana.',
+            'min'       => 'Nazwa powinna mieć minimalnie :min znaków.',
+            'max'       => 'Nazwa powinna mieć maksymalnie :max znaków.'
         ]
     ],
 

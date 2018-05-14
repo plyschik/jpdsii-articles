@@ -37,3 +37,12 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::post('/articles/edit/{id}', 'Dashboard\ArticlesController@update')->name('dashboard.articles.edit');
     Route::delete('/articles/{id}', 'Dashboard\ArticlesController@delete')->name('dashboard.articles.delete');
 });
+
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
+    Route::get('/categories', 'Dashboard\CategoriesController@list')->name('dashboard.categories.list');
+    Route::get('/categories/create', 'Dashboard\CategoriesController@create')->name('dashboard.categories.create');
+    Route::post('/categories/create', 'Dashboard\CategoriesController@store')->name('dashboard.categories.create');
+    Route::get('/categories/edit/{id}', 'Dashboard\CategoriesController@edit')->name('dashboard.categories.edit');
+    Route::post('/categories/edit/{id}', 'Dashboard\CategoriesController@update')->name('dashboard.categories.edit');
+    Route::delete('/categories/{id}', 'Dashboard\CategoriesController@delete')->name('dashboard.categories.delete');
+});

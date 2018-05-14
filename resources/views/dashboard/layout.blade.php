@@ -78,7 +78,7 @@
             <aside class="main-sidebar">
                 <section class="sidebar">
                     <ul class="sidebar-menu" data-widget="tree">
-                        <li class="treeview">
+                        <li class="treeview{{ \Route::is('dashboard.articles.*') ? ' active' : '' }}">
                             <a href="#">
                                 <i class="fa fa-th"></i> <span>{{ __('messages.dashboard.menu.articles.header') }}</span>
                                 <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
@@ -88,6 +88,18 @@
                                 <li><a href="{{ route('dashboard.articles.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.articles.add') }}</a></li>
                             </ul>
                         </li>
+                        @role('administrator')
+                            <li class="treeview{{ \Route::is('dashboard.categories.*') ? ' active' : '' }}">
+                                <a href="#">
+                                    <i class="fa fa-th"></i> <span>{{ __('messages.dashboard.menu.categories.header') }}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ route('dashboard.categories.list') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.categories.list') }}</a></li>
+                                    <li><a href="{{ route('dashboard.categories.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.categories.add') }}</a></li>
+                                </ul>
+                            </li>
+                        @endrole
                     </ul>
                 </section>
             </aside>
