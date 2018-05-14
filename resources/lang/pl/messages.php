@@ -57,6 +57,21 @@ return [
                 'add' => 'Dodaj kategorię'
             ]
         ],
+        'alerts' => [
+            'headers' => [
+                'information' => 'Informacja'
+            ],
+            'articles' => [
+                'added' => 'Artykuł został poprawnie dodany.',
+                'edited' => 'Artykuł został poprawnie zaktualizowany.',
+                'deleted' => 'Artykuł został poprawnie usunięty.'
+            ],
+            'categories' => [
+                'added' => 'Kategoria została poprawnie dodana.',
+                'edited' => 'Kategoria została poprawnie zaktualizowana.',
+                'deleted' => 'Kategoria została poprawnie usunięta.'
+            ]
+        ],
         'articles' => [
             'list' => [
                 'callouts' => [

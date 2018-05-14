@@ -21,7 +21,7 @@
     <body class="hold-transition skin-blue fixed sidebar-mini">
         <div class="wrapper">
             <header class="main-header">
-                <a href="{{ route('dashboard.index') }}" class="logo">
+                <a href="{{ route('dashboard.articles.list') }}" class="logo">
                     <span class="logo-mini"></span>
                     <span class="logo-lg"><b>JPDSII</b> Articles</span>
                 </a>
@@ -36,6 +36,12 @@
                         <ul class="nav navbar-nav">
                             <li>
                                 <a href="{{ route('front.articles.list') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('site.locale', ['locale' => 'pl']) }}">PL</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('site.locale', ['locale' => 'en']) }}">EN</a>
                             </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">

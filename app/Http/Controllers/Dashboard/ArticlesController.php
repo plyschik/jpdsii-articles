@@ -29,7 +29,7 @@ class ArticlesController extends Controller
             abort(500, $exception->getMessage());
         }
 
-        return back();
+        return back()->withSuccess(__('messages.dashboard.alerts.articles.deleted'));
     }
 
     public function create()
@@ -51,7 +51,10 @@ class ArticlesController extends Controller
             abort(500, 'Article was not created.');
         }
 
-        return redirect()->route('dashboard.articles.list');
+        return redirect()
+            ->route('dashboard.articles.list')
+            ->withSuccess(__('messages.dashboard.alerts.articles.added'))
+        ;
     }
 
     public function edit($id)
@@ -74,6 +77,9 @@ class ArticlesController extends Controller
             abort(404, 'Article not found.');
         }
 
-        return redirect()->route('dashboard.articles.list');
+        return redirect()
+            ->route('dashboard.articles.list')
+            ->withSuccess(__('messages.dashboard.alerts.articles.edited'))
+        ;
     }
 }

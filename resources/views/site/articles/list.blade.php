@@ -23,6 +23,6 @@
                 {{ $articles->links() }}
             @endif
         </div>
-        @include('site.partials.categories')
+        @include('partials.categories')
     </div>
 @endsection

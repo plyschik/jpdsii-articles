@@ -11,6 +11,8 @@
 
 @section('content')
     <section class="content">
+        @include('partials.alert')
+
         @if (!$categories)
             <div class="callout callout-info">
                 <h4>{{ __('messages.dashboard.categories.list.callouts.nocategories.header') }}</h4>

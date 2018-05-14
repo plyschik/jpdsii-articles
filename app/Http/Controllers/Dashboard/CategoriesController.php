@@ -28,7 +28,7 @@ class CategoriesController extends Controller
             abort(500, $exception->getMessage());
         }
 
-        return back();
+        return back()->withSuccess(__('messages.dashboard.alerts.categories.deleted'));
     }
 
     public function create()
@@ -46,7 +46,10 @@ class CategoriesController extends Controller
             abort(500, 'Category was not created.');
         }
 
-        return redirect()->route('dashboard.categories.list');
+        return redirect()
+            ->route('dashboard.categories.list')
+            ->withSuccess(__('messages.dashboard.alerts.categories.added'))
+        ;
     }
 
     public function edit($id)
@@ -66,6 +69,9 @@ class CategoriesController extends Controller
             abort(404, 'Category not found.');
         }
 
-        return redirect()->route('dashboard.categories.list');
+        return redirect()
+            ->route('dashboard.categories.list')
+            ->withSuccess(__('messages.dashboard.alerts.categories.edited'))
+        ;
     }
 }

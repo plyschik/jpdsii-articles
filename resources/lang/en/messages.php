@@ -57,6 +57,21 @@ return [
                 'add' => 'Add category'
             ]
         ],
+        'alerts' => [
+            'headers' => [
+                'information' => 'Information'
+            ],
+            'articles' => [
+                'added' => 'Article created successfully.',
+                'edited' => 'Article updated successfully.',
+                'deleted' => 'Article deleted successfully.'
+            ],
+            'categories' => [
+                'added' => 'Category created successfully.',
+                'edited' => 'Category updated successfully.',
+                'deleted' => 'Category deleted successfully.'
+            ]
+        ],
         'articles' => [
             'list' => [
                 'callouts' => [
