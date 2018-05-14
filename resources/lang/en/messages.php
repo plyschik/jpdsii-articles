@@ -37,7 +37,11 @@ return [
         ],
         'headers' => [
             'categories' => 'Categories',
-            'articles_in_category' => 'Articles in category'
+            'articles_in_category' => 'Articles in category',
+            'articles_from_user' => 'Articles from user'
+        ],
+        'footer' => [
+            'article' => "Article added from: <a href=\":userRoute\">:user</a>, in category: <a href=\":categoryRoute\">:category</a>. Created at: :date."
         ]
     ],
     'dashboard' => [

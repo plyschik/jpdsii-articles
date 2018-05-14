@@ -52,21 +52,10 @@
                                     <li class="user-header">
                                         <img src="{{ asset('images/noavatar.png') }}" class="img-circle" alt="User Image">
                                         <p>{{ Auth::user()->fullName }}</p>
-                                        <p>{{ Auth::user()->getRoleNames()->first() }}</p>
+                                        <p>
+                                            <i>{{ Auth::user()->getRoleNames()->first() }}</i>
+                                        </p>
                                     </li>
-                                    <!--<li class="user-body">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Link</a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Link</a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Link</a>
-                                            </div>
-                                        </div>
-                                    </li>-->
                                     <li class="user-footer">
                                         <div class="pull-right">
                                             <form action="{{ route('dashboard.signout') }}" method="POST">

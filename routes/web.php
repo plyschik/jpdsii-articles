@@ -26,6 +26,7 @@ Route::get('/', 'ArticlesController@list')->name('front.articles.list');
 Route::get('/article/{id}', 'ArticlesController@show')->name('front.articles.show');
 
 Route::get('/category/{categoryId}', 'CategoriesController@listOfArticlesOfCategory')->name('site.category.list');
+Route::get('/author/{authorId}', 'AuthorsController@listOfArticlesOfAuthor')->name('site.authors.list');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');

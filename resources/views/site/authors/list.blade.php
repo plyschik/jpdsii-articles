@@ -8,7 +8,7 @@
                     {{ __('messages.site.alerts.no_articles') }}
                 </div>
             @else
-                <h2 class="mb-3">{{ __('messages.site.headers.articles_in_category') }}: {{ $articles->first()->category->name }}</h2>
+                <h2 class="mb-3">{{ __('messages.site.headers.articles_from_user') }}: {{ $articles->first()->category->name }}</h2>
                 @each ('partials.article', $articles, 'article')
                 {{ $articles->links() }}
             @endif
