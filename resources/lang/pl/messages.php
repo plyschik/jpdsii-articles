@@ -34,6 +34,10 @@ return [
         ],
         'alerts' => [
             'no_articles' => 'Brak artykułow do wyświetlenia.'
+        ],
+        'headers' => [
+            'categories' => 'Kategorie',
+            'articles_in_category' => 'Artykuły w kategorii'
         ]
     ],
     'dashboard' => [
@@ -64,6 +68,7 @@ return [
                     'headers' => [
                         'id' => 'ID',
                         'author' => 'Autor',
+                        'category' => 'Kategoria',
                         'title' => 'Tytuł',
                         'created_at' => 'Utworzono',
                         'updated_at' => 'Zaktualizowano'

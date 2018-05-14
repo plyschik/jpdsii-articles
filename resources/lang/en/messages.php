@@ -34,6 +34,10 @@ return [
         ],
         'alerts' => [
             'no_articles' => 'No articles to display.'
+        ],
+        'headers' => [
+            'categories' => 'Categories',
+            'articles_in_category' => 'Articles in category'
         ]
     ],
     'dashboard' => [
@@ -64,6 +68,7 @@ return [
                     'headers' => [
                         'id' => 'ID',
                         'author' => 'Author',
+                        'category' => 'Category',
                         'title' => 'Title',
                         'created_at' => 'Created at',
                         'updated_at' => 'Updated at'

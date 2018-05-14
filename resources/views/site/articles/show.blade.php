@@ -11,15 +11,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card mb-3">
-                <div class="card-header">Categories</div>
-                <div class="list-group list-group-flush">
-                    @foreach ($categories as $category)
-                        <a href="#" class="list-group-item list-group-item-action">{{ $category->name }} ({{ $category->articles_count }})</a>
-                    @endforeach
-                </div>
-            </div>
-        </div>
+        @include('site.partials.categories')
     </div>
 @endsection

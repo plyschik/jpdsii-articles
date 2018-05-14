@@ -11,7 +11,7 @@ class ArticlesController extends Controller
 {
     public function list()
     {
-        $articles = Article::with('user')->orderByDesc('created_at')->paginate(10);
+        $articles = Article::with(['user', 'category'])->orderByDesc('created_at')->paginate(10);
 
         return view('dashboard.articles.list', [
             'articles' => $articles

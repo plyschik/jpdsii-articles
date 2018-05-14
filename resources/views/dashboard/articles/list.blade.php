@@ -27,6 +27,7 @@
                             <tr>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.id') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.author') }}</th>
+                                <th>{{ __('messages.dashboard.articles.list.table.headers.category') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.title') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.created_at') }}</th>
                                 <th>{{ __('messages.dashboard.articles.list.table.headers.updated_at') }}</th>
@@ -37,6 +38,7 @@
                                 <tr>
                                     <td>{{ $article->id }}</td>
                                     <td>{{ $article->user->fullName }}</td>
+                                    <td>{{ $article->category->name }}</td>
                                     <td>{{ str_limit($article->title, 20) }}</td>
                                     <td>{{ $article->created_at }}</td>
                                     <td>{{ $article->updated_at }}</td>

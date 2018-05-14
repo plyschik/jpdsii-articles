@@ -23,6 +23,8 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('pass
 Route::get('/', 'ArticlesController@list')->name('front.articles.list');
 Route::get('/article/{id}', 'ArticlesController@show')->name('front.articles.show');
 
+Route::get('/category/{categoryId}', 'CategoriesController@listOfArticlesOfCategory')->name('site.category.list');
+
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
         return view('dashboard.index');
