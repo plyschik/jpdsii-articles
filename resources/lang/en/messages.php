@@ -30,7 +30,8 @@ return [
     ],
     'site' => [
         'navbar' => [
-            'dashboard' => 'Dashboard'
+            'dashboard' => 'Dashboard',
+            'search' => 'Search...'
         ],
         'alerts' => [
             'no_articles' => 'No articles to display.'

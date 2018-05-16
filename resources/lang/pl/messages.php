@@ -30,7 +30,8 @@ return [
     ],
     'site' => [
         'navbar' => [
-            'dashboard' => 'Panel administracyjny'
+            'dashboard' => 'Panel administracyjny',
+            'search' => 'Szukaj...'
         ],
         'alerts' => [
             'no_articles' => 'Brak artykułow do wyświetlenia.'
