@@ -9,29 +9,6 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class CategoriesController extends Controller
 {
-    public function list()
-    {
-        $categories = Category::query()
-            ->orderByDesc('id')
-            ->paginate(10)
-        ;
-
-        return view('dashboard.categories.list', [
-            'categories' => $categories
-        ]);
-    }
-
-    public function delete(Category $category)
-    {
-        try {
-            $category->delete();
-        } catch (\Exception $exception) {
-            abort(500, $exception->getMessage());
-        }
-
-        return back()->withSuccess(__('messages.dashboard.alerts.categories.deleted'));
-    }
-
     public function create()
     {
         return view('dashboard.categories.create');
@@ -44,13 +21,22 @@ class CategoriesController extends Controller
         ]);
 
         if (!$created) {
-            abort(500, 'Category was not created.');
+            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
         }
 
         return redirect()
             ->route('dashboard.categories.list')
             ->withSuccess(__('messages.dashboard.alerts.categories.added'))
         ;
+    }
+
+    public function list()
+    {
+        $categories = Category::query()->orderByDesc('id');
+
+        return view('dashboard.categories.list', [
+            'categories' => $categories->paginate(10)
+        ]);
     }
 
     public function edit(Category $category)
@@ -67,12 +53,23 @@ class CategoriesController extends Controller
                 'name' => $request->get('name')
             ]);
         } catch (ModelNotFoundException $exception) {
-            abort(404, 'Category not found.');
+            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
         }
 
         return redirect()
             ->route('dashboard.categories.list')
             ->withSuccess(__('messages.dashboard.alerts.categories.edited'))
         ;
+    }
+
+    public function delete(Category $category)
+    {
+        try {
+            $category->delete();
+        } catch (\Exception $exception) {
+            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+        }
+
+        return back()->withSuccess(__('messages.dashboard.alerts.categories.deleted'));
     }
 }

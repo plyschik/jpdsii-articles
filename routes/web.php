@@ -29,12 +29,20 @@ Route::get('/category/{categoryId}', 'CategoriesController@listOfArticlesOfCateg
 Route::get('/author/{authorId}', 'AuthorsController@listOfArticlesOfAuthor')->name('site.authors.list');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
-    Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');
     Route::get('/articles/create', 'Dashboard\ArticlesController@create')->name('dashboard.articles.create');
     Route::post('/articles/create', 'Dashboard\ArticlesController@store')->name('dashboard.articles.create');
-    Route::get('/articles/edit/{article}', 'Dashboard\ArticlesController@edit')->name('dashboard.articles.edit');
-    Route::post('/articles/edit/{article}', 'Dashboard\ArticlesController@update')->name('dashboard.articles.edit');
-    Route::delete('/articles/{article}', 'Dashboard\ArticlesController@delete')->name('dashboard.articles.delete');
+
+    Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');
+
+    Route::group(['middleware' => 'can:update,article'], function () {
+        Route::get('/articles/edit/{article}', 'Dashboard\ArticlesController@edit')->name('dashboard.articles.edit');
+        Route::post('/articles/edit/{article}', 'Dashboard\ArticlesController@update')->name('dashboard.articles.edit');
+    });
+
+    Route::delete('/articles/{article}', 'Dashboard\ArticlesController@delete')
+        ->name('dashboard.articles.delete')
+        ->middleware('can:delete,article')
+    ;
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {

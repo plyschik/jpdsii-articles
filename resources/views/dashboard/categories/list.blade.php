@@ -13,7 +13,7 @@
     <section class="content">
         @include('partials.alert')
 
-        @if (!$categories)
+        @if (!count($categories))
             <div class="callout callout-info">
                 <h4>{{ __('messages.dashboard.categories.list.callouts.nocategories.header') }}</h4>
                 <p>{{ __('messages.dashboard.categories.list.callouts.nocategories.paragraph') }} <a href="{{ route('dashboard.categories.create') }}">{{ __('messages.dashboard.categories.list.callouts.nocategories.link') }}</a></p>

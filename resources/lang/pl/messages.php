@@ -35,7 +35,8 @@ return [
         ],
         'alerts' => [
             'no_articles' => 'Brak artykułow do wyświetlenia.',
-            'access_denied' => 'Dostęp zabroniony. Nie masz uprawnień do wykonania tej akcji lub dostępu do zasobu.'
+            'access_denied' => 'Dostęp zabroniony. Nie masz uprawnień do wykonania tej akcji lub dostępu do zasobu.',
+            'something_went_wrong' => 'Coś poszło nie tak. Spróbuj ponownie.'
         ],
         'headers' => [
             'categories' => 'Kategorie',
