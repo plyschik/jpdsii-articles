@@ -11,19 +11,20 @@ class CategoriesController extends Controller
 {
     public function list()
     {
-        $categories = Category::query()->orderByDesc('id')->paginate(10);
+        $categories = Category::query()
+            ->orderByDesc('id')
+            ->paginate(10)
+        ;
 
         return view('dashboard.categories.list', [
             'categories' => $categories
         ]);
     }
 
-    public function delete($id)
+    public function delete(Category $category)
     {
         try {
-            Category::findOrFail($id)->delete();
-        } catch (ModelNotFoundException $exception) {
-            abort(404, 'Category not found.');
+            $category->delete();
         } catch (\Exception $exception) {
             abort(500, $exception->getMessage());
         }
@@ -52,17 +53,17 @@ class CategoriesController extends Controller
         ;
     }
 
-    public function edit($id)
+    public function edit(Category $category)
     {
         return view('dashboard.categories.edit', [
-            'category' => Category::findOrFail($id)
+            'category' => $category
         ]);
     }
 
-    public function update(StoreCategory $request, $id)
+    public function update(StoreCategory $request, Category $category)
     {
         try {
-            Category::findOrFail($id)->update([
+            $category->update([
                 'name' => $request->get('name')
             ]);
         } catch (ModelNotFoundException $exception) {

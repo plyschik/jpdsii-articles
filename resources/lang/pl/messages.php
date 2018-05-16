@@ -34,7 +34,8 @@ return [
             'search' => 'Szukaj...'
         ],
         'alerts' => [
-            'no_articles' => 'Brak artykułow do wyświetlenia.'
+            'no_articles' => 'Brak artykułow do wyświetlenia.',
+            'access_denied' => 'Dostęp zabroniony. Nie masz uprawnień do wykonania tej akcji lub dostępu do zasobu.'
         ],
         'headers' => [
             'categories' => 'Kategorie',

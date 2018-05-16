@@ -32,16 +32,16 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/articles', 'Dashboard\ArticlesController@list')->name('dashboard.articles.list');
     Route::get('/articles/create', 'Dashboard\ArticlesController@create')->name('dashboard.articles.create');
     Route::post('/articles/create', 'Dashboard\ArticlesController@store')->name('dashboard.articles.create');
-    Route::get('/articles/edit/{id}', 'Dashboard\ArticlesController@edit')->name('dashboard.articles.edit');
-    Route::post('/articles/edit/{id}', 'Dashboard\ArticlesController@update')->name('dashboard.articles.edit');
-    Route::delete('/articles/{id}', 'Dashboard\ArticlesController@delete')->name('dashboard.articles.delete');
+    Route::get('/articles/edit/{article}', 'Dashboard\ArticlesController@edit')->name('dashboard.articles.edit');
+    Route::post('/articles/edit/{article}', 'Dashboard\ArticlesController@update')->name('dashboard.articles.edit');
+    Route::delete('/articles/{article}', 'Dashboard\ArticlesController@delete')->name('dashboard.articles.delete');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
     Route::get('/categories', 'Dashboard\CategoriesController@list')->name('dashboard.categories.list');
     Route::get('/categories/create', 'Dashboard\CategoriesController@create')->name('dashboard.categories.create');
     Route::post('/categories/create', 'Dashboard\CategoriesController@store')->name('dashboard.categories.create');
-    Route::get('/categories/edit/{id}', 'Dashboard\CategoriesController@edit')->name('dashboard.categories.edit');
-    Route::post('/categories/edit/{id}', 'Dashboard\CategoriesController@update')->name('dashboard.categories.edit');
-    Route::delete('/categories/{id}', 'Dashboard\CategoriesController@delete')->name('dashboard.categories.delete');
+    Route::get('/categories/edit/{category}', 'Dashboard\CategoriesController@edit')->name('dashboard.categories.edit');
+    Route::post('/categories/edit/{category}', 'Dashboard\CategoriesController@update')->name('dashboard.categories.edit');
+    Route::delete('/categories/{category}', 'Dashboard\CategoriesController@delete')->name('dashboard.categories.delete');
 });

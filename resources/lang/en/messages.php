@@ -34,7 +34,8 @@ return [
             'search' => 'Search...'
         ],
         'alerts' => [
-            'no_articles' => 'No articles to display.'
+            'no_articles' => 'No articles to display.',
+            'access_denied' => 'Access denied. You do not have permission to perform this action or access this resource.'
         ],
         'headers' => [
             'categories' => 'Categories',

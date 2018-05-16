@@ -4,27 +4,40 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Article;
 use App\Category;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreArticle;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ArticlesController extends Controller
 {
-    public function list()
+    public function list(Request $request)
     {
-        $articles = Article::with(['user', 'category'])->orderByDesc('id')->paginate(10);
+        $articles = Article::with(['user', 'category'])->orderByDesc('id');
+
+        if (!$request->user()->hasRole('administrator')) {
+            $articles->where('user_id', '=', $request->user()->id);
+        }
 
         return view('dashboard.articles.list', [
-            'articles' => $articles
+            'articles' => $articles->paginate(10)
         ]);
     }
 
-    public function delete($id)
+    public function delete(Article $article)
     {
         try {
-            Article::findOrFail($id)->delete();
-        } catch (ModelNotFoundException $exception) {
-            abort(404, 'Article not found.');
+            $this->authorize('delete', $article);
+        } catch (AuthorizationException $exception) {
+            return redirect()
+                ->route('dashboard.articles.list')
+                ->withWarning(__('messages.site.alerts.access_denied'))
+                ;
+        }
+
+        try {
+            $article->delete();
         } catch (\Exception $exception) {
             abort(500, $exception->getMessage());
         }
@@ -57,17 +70,34 @@ class ArticlesController extends Controller
         ;
     }
 
-    public function edit($id)
+    public function edit(Article $article)
     {
+        try {
+            $this->authorize('update', $article);
+        } catch (AuthorizationException $exception) {
+            return redirect()
+                ->route('dashboard.articles.list')
+                ->withWarning(__('messages.site.alerts.access_denied'))
+            ;
+        }
+
         return view('dashboard.articles.edit', [
-            'article' => Article::findOrFail($id)
+            'article' => $article
         ]);
     }
 
-    public function update(StoreArticle $request, $id)
+    public function update(Article $article, StoreArticle $request)
     {
         try {
-            $article = Article::findOrFail($id);
+            $this->authorize('update', $article);
+        } catch (AuthorizationException $exception) {
+            return redirect()
+                ->route('dashboard.articles.list')
+                ->withWarning(__('messages.site.alerts.access_denied'))
+            ;
+        }
+
+        try {
             $article->category()->associate(Category::findOrFail($request->get('category')));
             $article->update([
                 'title' => $request->get('title'),
