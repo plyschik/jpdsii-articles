@@ -56,4 +56,6 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
     Route::get('/users', 'Dashboard\UserController@list')->name('dashboard.users.list');
+    Route::get('/users/create', 'Dashboard\UserController@create')->name('dashboard.users.create');
+    Route::post('/users/create', 'Dashboard\UserController@store')->name('dashboard.users.create');
 });

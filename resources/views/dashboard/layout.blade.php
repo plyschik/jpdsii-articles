@@ -102,7 +102,7 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ route('dashboard.users.list') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.users.list') }}</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.users.add') }}</a></li>
+                                    <li><a href="{{ route('dashboard.users.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.users.add') }}</a></li>
                                 </ul>
                             </li>
                         @endrole

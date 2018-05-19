@@ -212,6 +212,9 @@ return [
                     'email' => 'Email:',
                     'first_name' => 'Imię:',
                     'last_name' => 'Nazwisko:',
+                    'password' => 'Hasło:',
+                    'password_confirm' => 'Hasło ponownie:',
+                    'role' => 'Rola:',
                     'submit' => 'Dodaj użytkownika'
                 ]
             ],
