@@ -16,8 +16,12 @@ class LocaleMiddleware
     public function handle($request, Closure $next)
     {
         if (session()->has('locale')) {
-            app()->setLocale(session()->get('locale'));
+            $locale = session()->get('locale');
+        } else {
+            $locale = config('app.locale');
         }
+
+        app()->setLocale($locale);
 
         return $next($request);
     }

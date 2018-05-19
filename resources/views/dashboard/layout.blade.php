@@ -37,11 +37,12 @@
                             <li>
                                 <a href="{{ route('front.articles.list') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
                             </li>
-                            <li>
-                                <a href="{{ route('site.locale', ['locale' => 'pl']) }}">PL</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('site.locale', ['locale' => 'en']) }}">EN</a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ strtoupper(app()->getLocale()) }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ route('site.locale', ['locale' => 'pl']) }}">PL</a></li>
+                                    <li><a href="{{ route('site.locale', ['locale' => 'en']) }}">EN</a></li>
+                                </ul>
                             </li>
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
