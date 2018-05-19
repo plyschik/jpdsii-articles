@@ -16,12 +16,27 @@
         @if (!count($articles))
             <div class="callout callout-info">
                 <h4>{{ __('messages.dashboard.articles.list.callouts.noarticles.header') }}</h4>
-                <p>{{ __('messages.dashboard.articles.list.callouts.noarticles.paragraph') }} <a href="{{ route('dashboard.articles.create') }}">{{ __('messages.dashboard.articles.list.callouts.noarticles.link') }}</a></p>
+
+                @if (\Request::has('search'))
+                    <p>{!! __('messages.dashboard.articles.list.callouts.noarticles.search', ['query' => \Request::get('search')]) !!}. <a href="{{ route('dashboard.articles.list') }}">{{ __('messages.dashboard.articles.list.callouts.noarticles.back') }}</a></p>
+                @else
+                    <p>{{ __('messages.dashboard.articles.list.callouts.noarticles.paragraph') }} <a href="{{ route('dashboard.articles.create') }}">{{ __('messages.dashboard.articles.list.callouts.noarticles.link') }}</a></p>
+                @endif
             </div>
         @else
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title">{{ __('messages.dashboard.articles.list.headers.articles_list') }}</h3>
+                    <div class="box-tools">
+                        <form action="" method="GET">
+                            <div class="input-group input-group-sm">
+                                <input name="search" class="form-control pull-right" placeholder="{{ __('messages.dashboard.navbar.search') }}" type="text" value="{{ \Request::get('search') }}">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div class="box-body table-responsive no-padding">
                     <table class="table">

@@ -51,7 +51,8 @@ return [
     'dashboard' => [
         'navbar' => [
             'mainpage' => 'Strona głowna',
-            'signout' => 'Wyloguj się'
+            'signout' => 'Wyloguj się',
+            'search' => 'Szukaj...'
         ],
         'menu' => [
             'articles' => [
@@ -86,7 +87,9 @@ return [
                     'noarticles' => [
                         'header' => 'Lista artykułów',
                         'paragraph' => 'Brak artykułów do wyświetlenia.',
-                        'link' => 'Dodaj pierwszy artykuł!'
+                        'search' => 'Brak wyników wyszukiwania dla frazy: <b>:query</b>',
+                        'link' => 'Dodaj pierwszy artykuł!',
+                        'back' => 'Powrót do listy artykułów.'
                     ]
                 ],
                 'headers' => [

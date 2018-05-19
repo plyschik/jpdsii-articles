@@ -51,7 +51,8 @@ return [
     'dashboard' => [
         'navbar' => [
             'mainpage' => 'Main page',
-            'signout' => 'Sign out'
+            'signout' => 'Sign out',
+            'search' => 'Search...'
         ],
         'menu' => [
             'articles' => [
@@ -86,7 +87,9 @@ return [
                     'noarticles' => [
                         'header' => 'List of articles',
                         'paragraph' => 'No articles to show.',
-                        'link' => 'Add first article!'
+                        'search' => 'No results for query: <b>:query</b>',
+                        'link' => 'Add first article!',
+                        'back' => 'Go to articles list.'
                     ]
                 ],
                 'headers' => [

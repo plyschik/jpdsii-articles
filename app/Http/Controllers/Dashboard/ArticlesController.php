@@ -50,6 +50,15 @@ class ArticlesController extends Controller
             $articles->where('user_id', '=', $request->user()->id);
         }
 
+        if ($request->has('search')) {
+            $search = $request->get('search');
+
+            $articles
+                ->where('title', 'LIKE', "{$search}%")
+                ->orWhere('content', 'LIKE', "{$search}%")
+            ;
+        }
+
         return view('dashboard.articles.list', [
             'articles' => $articles->paginate(10)
         ]);
