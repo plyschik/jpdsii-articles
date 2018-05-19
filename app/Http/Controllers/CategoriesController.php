@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Category;
 
 class CategoriesController extends Controller
 {
-    public function listOfArticlesOfCategory($categoryId)
+    public function listOfArticlesOfCategory(Category $category)
     {
         return view('site.categories.list', [
-            'articles' => Article::with(['user', 'category'])->where('category_id', '=', $categoryId)->orderByDesc('id')->paginate(10)
+            'articles' => $category->articles()->with(['user', 'category'])->latest('id')->paginate(10)
         ]);
     }
 }
