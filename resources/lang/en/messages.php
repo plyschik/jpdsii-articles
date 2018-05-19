@@ -64,6 +64,11 @@ return [
                 'header' => 'Categories',
                 'list' => 'Categories list',
                 'add' => 'Add category'
+            ],
+            'users' => [
+                'header' => 'Users',
+                'list' => 'Users list',
+                'add' => 'Add user'
             ]
         ],
         'alerts' => [
@@ -79,6 +84,11 @@ return [
                 'added' => 'Category created successfully.',
                 'edited' => 'Category updated successfully.',
                 'deleted' => 'Category deleted successfully.'
+            ],
+            'users' => [
+                'added' => 'User created successfully.',
+                'edited' => 'User updated successfully.',
+                'deleted' => 'User deleted successfully.'
             ]
         ],
         'articles' => [
@@ -164,6 +174,54 @@ return [
                 'form' => [
                     'name' => 'Name:',
                     'submit' => 'Update category'
+                ]
+            ]
+        ],
+        'users' => [
+            'list' => [
+                'callouts' => [
+                    'nousers' => [
+                        'header' => 'List of users',
+                        'paragraph' => 'No users to show.',
+                        'search' => 'No results for query: <b>:query</b>',
+                        'link' => 'Add first user!',
+                        'back' => 'Go to users list.'
+                    ]
+                ],
+                'headers' => [
+                    'articles_list' => 'Users list'
+                ],
+                'table' => [
+                    'headers' => [
+                        'id' => 'ID',
+                        'email' => 'Email',
+                        'first_name' => 'First name',
+                        'last_name' => 'Last name',
+                        'role' => 'Role',
+                        'created_at' => 'Created at',
+                        'updated_at' => 'Updated at'
+                    ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Confirm user delete.'
+                ]
+            ],
+            'create' => [
+                'header' => 'New user',
+                'form' => [
+                    'email' => 'Email:',
+                    'first_name' => 'First name:',
+                    'last_name' => 'Last name:',
+                    'submit' => 'Add user'
+                ]
+            ],
+            'edit' => [
+                'header' => 'User edit',
+                'form' => [
+                    'email' => 'Email:',
+                    'first_name' => 'First name:',
+                    'last_name' => 'Last name:',
+                    'submit' => 'Update user'
                 ]
             ]
         ]

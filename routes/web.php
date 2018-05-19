@@ -53,3 +53,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
     Route::post('/categories/edit/{category}', 'Dashboard\CategoriesController@update')->name('dashboard.categories.edit');
     Route::delete('/categories/{category}', 'Dashboard\CategoriesController@delete')->name('dashboard.categories.delete');
 });
+
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
+    Route::get('/users', 'Dashboard\UserController@list')->name('dashboard.users.list');
+});
