@@ -35,6 +35,7 @@ return [
         ],
         'alerts' => [
             'no_articles' => 'No articles to display.',
+            'no_categories' => 'No categories to display.',
             'access_denied' => 'Access denied. You do not have permission to perform this action or access this resource.',
             'something_went_wrong' => 'Something went wrong. Try again.'
         ],

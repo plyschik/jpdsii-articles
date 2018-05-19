@@ -9,8 +9,6 @@ class CategoriesPanelComposer
 {
     public function compose(View $view)
     {
-        $categories = Category::withCount('articles')->orderByDesc('articles_count')->limit(4)->get();
-
-        $view->with('categories', $categories);
+        $view->with('categories', Category::withCount('articles')->orderByDesc('name')->limit(4)->get());
     }
 }
