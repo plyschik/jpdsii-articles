@@ -91,6 +91,7 @@ return [
                         'link' => 'Dodaj pierwszy artykuł!',
                         'back' => 'Powrót do listy artykułów.'
                     ]
+
                 ],
                 'headers' => [
                     'articles_list' => 'Lista artykułów'
@@ -132,7 +133,9 @@ return [
                     'nocategories' => [
                         'header' => 'Lista categorii',
                         'paragraph' => 'Brak kategorii do wyświetlenia.',
-                        'link' => 'Dodaj pierwszy kategorię!'
+                        'search' => 'Brak wyników wyszukiwania dla frazy: <b>:query</b>',
+                        'link' => 'Dodaj pierwszą kategorię!',
+                        'back' => 'Powrót do listy kategorii.'
                     ]
                 ],
                 'headers' => [

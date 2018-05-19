@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Category;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategory;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -30,9 +31,17 @@ class CategoriesController extends Controller
         ;
     }
 
-    public function list()
+    public function list(Request $request)
     {
         $categories = Category::query()->orderByDesc('id');
+
+        if ($request->has('search')) {
+            $search = $request->get('search');
+
+            $categories
+                ->where('name', 'LIKE', "{$search}%")
+            ;
+        }
 
         return view('dashboard.categories.list', [
             'categories' => $categories->paginate(10)

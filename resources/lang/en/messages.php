@@ -132,7 +132,9 @@ return [
                     'nocategories' => [
                         'header' => 'List of categories',
                         'paragraph' => 'No categories to show.',
-                        'link' => 'Add first category!'
+                        'search' => 'No results for query: <b>:query</b>',
+                        'link' => 'Add first category!',
+                        'back' => 'Go to categories list.'
                     ]
                 ],
                 'headers' => [
