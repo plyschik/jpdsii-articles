@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\User;
 
 class AuthorsController extends Controller
 {
-    public function listOfArticlesOfAuthor($authorId)
+    public function listOfArticlesOfAuthor(User $user)
     {
         return view('site.authors.list', [
-            'articles' => Article::with(['user', 'category'])->where('user_id', '=', $authorId)->orderByDesc('id')->paginate(10)
+            'author_full_name'  => $user->fullName,
+            'articles'          => $user->articles()->with(['user', 'category'])->latest('id')->paginate(10)
         ]);
     }
 }
