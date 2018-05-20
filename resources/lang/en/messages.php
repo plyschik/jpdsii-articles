@@ -226,6 +226,9 @@ return [
                     'last_name' => 'Last name:',
                     'submit' => 'Update user'
                 ]
+            ],
+            'delete' => [
+                'disabled_button_information' => 'You can only delete users with role different from administrator. Additionally you can not delete yourself account.'
             ]
         ]
     ]

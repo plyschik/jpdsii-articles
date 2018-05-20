@@ -65,9 +65,9 @@
                                         <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
                                     </td>
                                     <td class="text-center">
-                                        <form class="delete-form" action="#" method="POST">
+                                        <form class="delete-form" action="{{ route('dashboard.users.delete', $user) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-danger" type="submit">
+                                            <button class="btn btn-danger" @cannot('delete', $user) disabled="disabled" title="{{ __('messages.dashboard.users.delete.disabled_button_information') }}" @endcannot type="submit">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                             @csrf

@@ -226,6 +226,9 @@ return [
                     'last_name' => 'Nazwisko:',
                     'submit' => 'Zaktualizuj użytkownika'
                 ]
+            ],
+            'delete' => [
+                'disabled_button_information' => 'Usuwać można tylko użytkowników z rangą inną niż administrator. Dodatkowo nie można usunąć swojego własnego konta.'
             ]
         ]
     ]

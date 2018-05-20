@@ -56,4 +56,15 @@ class UserController extends Controller
             'users' => $users->paginate(10)
         ]);
     }
+
+    public function delete(User $user)
+    {
+        try {
+            $user->delete();
+        } catch (\Exception $exception) {
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
+        }
+
+        return back()->with('success', __('messages.dashboard.alerts.users.deleted'));
+    }
 }
