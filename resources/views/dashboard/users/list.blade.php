@@ -62,7 +62,7 @@
                                     <td>{{ $user->created_at }}</td>
                                     <td>{{ $user->updated_at }}</td>
                                     <td class="text-center">
-                                        <a class="btn btn-primary" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a class="btn btn-primary" href="{{ route('dashboard.users.edit', $user) }}"><span class="glyphicon glyphicon-pencil"></span></a>
                                     </td>
                                     <td class="text-center">
                                         <form class="delete-form" action="{{ route('dashboard.users.delete', $user) }}" method="POST">

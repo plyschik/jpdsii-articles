@@ -23,12 +23,29 @@ class StoreUser extends FormRequest
      */
     public function rules()
     {
-        return [
-            'email'         => 'required|email|unique:users',
-            'first_name'    => 'required|string|min:2|max:32',
-            'last_name'     => 'required|string|min:2|max:32',
-            'password'      => 'required|string|min:6|confirmed',
-            'role_id'       => 'required|exists:roles,id'
-        ];
+        switch ($this->method()) {
+            case 'POST':
+                return [
+                    'email'         => 'required|email|unique:users',
+                    'first_name'    => 'required|string|min:2|max:32',
+                    'last_name'     => 'required|string|min:2|max:32',
+                    'password'      => 'required|string|min:6|confirmed',
+                    'role_id'       => 'required|exists:roles,id'
+                ];
+
+                break;
+            case 'PATCH':
+                return [
+                    'email'         => 'required|email|unique:users,id,' . $this->get('id'),
+                    'first_name'    => 'required|string|min:2|max:32',
+                    'last_name'     => 'required|string|min:2|max:32',
+                    'password'      => 'string|nullable|min:6|confirmed',
+                    'role_id'       => 'required|exists:roles,id'
+                ];
+
+                break;
+            default:
+                break;
+        }
     }
 }

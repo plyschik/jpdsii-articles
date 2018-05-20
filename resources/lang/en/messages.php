@@ -213,7 +213,7 @@ return [
                     'first_name' => 'First name:',
                     'last_name' => 'Last name:',
                     'password' => 'Password:',
-                    'password_confirm' => 'Pa1ssword confirm:',
+                    'password_confirm' => 'Password confirm:',
                     'role' => 'Role:',
                     'submit' => 'Add user'
                 ]
