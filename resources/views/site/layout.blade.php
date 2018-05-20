@@ -26,7 +26,11 @@
                     </form>
                     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                         <li class="nav-item active">
-                            <a class="nav-link" href="{{ Auth::user() ? route('dashboard.articles.list') : route('dashboard.signin') }}">{{ __('messages.site.navbar.dashboard') }}</a>
+                            @if (auth()->user())
+                                <a class="nav-link" href="{{ route('dashboard.articles.list') }}">{{ __('messages.site.navbar.dashboard') }}</a>
+                            @else
+                                <a class="nav-link" href="{{ route('dashboard.signin') }}">{{ __('messages.site.navbar.signin') }}</a>
+                            @endif
                         </li>
                     </ul>
                 </div>

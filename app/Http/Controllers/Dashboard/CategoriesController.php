@@ -22,25 +22,23 @@ class CategoriesController extends Controller
         ]);
 
         if (!$created) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
         return redirect()
             ->route('dashboard.categories.list')
-            ->withSuccess(__('messages.dashboard.alerts.categories.added'))
+            ->with('success', __('messages.dashboard.alerts.categories.added'))
         ;
     }
 
     public function list(Request $request)
     {
-        $categories = Category::query()->orderByDesc('id');
+        $categories = Category::query()->latest('id');
 
         if ($request->has('search')) {
             $search = $request->get('search');
 
-            $categories
-                ->where('name', 'LIKE', "{$search}%")
-            ;
+            $categories->where('name', 'LIKE', "{$search}%");
         }
 
         return view('dashboard.categories.list', [
@@ -50,9 +48,7 @@ class CategoriesController extends Controller
 
     public function edit(Category $category)
     {
-        return view('dashboard.categories.edit', [
-            'category' => $category
-        ]);
+        return view('dashboard.categories.edit', compact('category'));
     }
 
     public function update(StoreCategory $request, Category $category)
@@ -62,12 +58,12 @@ class CategoriesController extends Controller
                 'name' => $request->get('name')
             ]);
         } catch (ModelNotFoundException $exception) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
         return redirect()
             ->route('dashboard.categories.list')
-            ->withSuccess(__('messages.dashboard.alerts.categories.edited'))
+            ->with('success', __('messages.dashboard.alerts.categories.edited'))
         ;
     }
 
@@ -76,9 +72,9 @@ class CategoriesController extends Controller
         try {
             $category->delete();
         } catch (\Exception $exception) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
-        return back()->withSuccess(__('messages.dashboard.alerts.categories.deleted'));
+        return back()->with('success', __('messages.dashboard.alerts.categories.deleted'));
     }
 }

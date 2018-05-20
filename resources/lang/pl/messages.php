@@ -31,6 +31,7 @@ return [
     'site' => [
         'navbar' => [
             'dashboard' => 'Panel administracyjny',
+            'signin' => 'Zaloguj się',
             'search' => 'Szukaj...'
         ],
         'alerts' => [

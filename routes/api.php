@@ -1,8 +1,5 @@
 <?php
 
-use App\Article;
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -14,18 +11,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/search', function (Request $request) {
-    $articles = [];
-
-    if ($request->get('query')) {
-        $articles = Article::query()
-            ->select(['id', 'title'])
-            ->where('title', 'LIKE', "%{$request->get('query')}%")
-            ->orderByDesc('id')
-            ->limit(4)
-            ->get()
-        ;
-    }
-
-    return response()->json($articles);
-});
+Route::get('/search', 'APIController@search');

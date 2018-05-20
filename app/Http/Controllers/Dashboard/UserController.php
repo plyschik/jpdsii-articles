@@ -13,9 +13,7 @@ class UserController extends Controller
 {
     public function create()
     {
-        $roles = Role::all();
-
-        return view('dashboard.users.create', compact('roles'));
+        return view('dashboard.users.create');
     }
 
     public function store(StoreUser $request)
@@ -41,7 +39,7 @@ class UserController extends Controller
 
     public function list(Request $request)
     {
-        $users = User::with(['roles'])->orderByDesc('id');
+        $users = User::with(['roles'])->latest('id');
 
         if ($request->has('search')) {
             $search = $request->get('search');
@@ -60,10 +58,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('dashboard.users.edit', [
-            'user' => $user,
-            'roles' => Role::all()
-        ]);
+        return view('dashboard.users.edit', compact('user'));
     }
 
     public function update(StoreUser $request, User $user)

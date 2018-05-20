@@ -14,10 +14,10 @@ class ArticlesTableSeeder extends Seeder
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 200; $i++) {
             Article::create([
-                'user_id'       => mt_rand(1, 2),
-                'category_id'   => mt_rand(1, 3),
+                'user_id'       => mt_rand(1, 4),
+                'category_id'   => mt_rand(1, 5),
                 'title'         => $faker->sentence(8),
                 'content'       => $faker->text(2048)
             ]);

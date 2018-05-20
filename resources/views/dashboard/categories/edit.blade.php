@@ -9,6 +9,7 @@
                         <h3 class="box-title">{{ __('messages.dashboard.categories.edit.header') }}</h3>
                     </div>
                     <form action="{{ route('dashboard.categories.edit', ['id' => $category->id]) }}" method="POST">
+                        @method('PATCH')
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="titleInput">{{ __('messages.dashboard.categories.edit.form.name') }}</label>

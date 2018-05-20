@@ -21,7 +21,7 @@ class ArticlesController extends Controller
         try {
             $category = Category::findOrFail($request->get('category'));
         } catch (ModelNotFoundException $exception) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
         $article = new Article([
@@ -33,21 +33,21 @@ class ArticlesController extends Controller
         $article->save();
 
         if (!$article) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
         return redirect()
             ->route('dashboard.articles.list')
-            ->withSuccess(__('messages.dashboard.alerts.articles.added'))
+            ->with('success', __('messages.dashboard.alerts.articles.added'))
         ;
     }
 
     public function list(Request $request)
     {
-        $articles = Article::with(['user', 'category'])->orderByDesc('id');
+        $articles = Article::with(['user', 'category'])->latest('id');
 
         if (!$request->user()->hasRole('administrator')) {
-            $articles->where('user_id', '=', $request->user()->id);
+            $articles->where('user_id', $request->user()->id);
         }
 
         if ($request->has('search')) {
@@ -66,9 +66,7 @@ class ArticlesController extends Controller
 
     public function edit(Article $article)
     {
-        return view('dashboard.articles.edit', [
-            'article' => $article
-        ]);
+        return view('dashboard.articles.edit', compact('article'));
     }
 
     public function update(Article $article, StoreArticle $request)
@@ -76,7 +74,7 @@ class ArticlesController extends Controller
         try {
             $category = Category::findOrFail($request->get('category'));
         } catch (ModelNotFoundException $exception) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
         try {
@@ -86,12 +84,12 @@ class ArticlesController extends Controller
                 'content' => $request->get('content')
             ]);
         } catch (ModelNotFoundException $exception) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
         return redirect()
             ->route('dashboard.articles.list')
-            ->withSuccess(__('messages.dashboard.alerts.articles.edited'))
+            ->with('success', __('messages.dashboard.alerts.articles.edited'))
         ;
     }
 
@@ -100,9 +98,9 @@ class ArticlesController extends Controller
         try {
             $article->delete();
         } catch (\Exception $exception) {
-            return back()->withWarning(__('messages.site.alerts.something_went_wrong'));
+            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
         }
 
-        return back()->withSuccess(__('messages.dashboard.alerts.articles.deleted'));
+        return back()->with('success', __('messages.dashboard.alerts.articles.deleted'));
     }
 }

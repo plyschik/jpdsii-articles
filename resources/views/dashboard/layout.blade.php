@@ -40,8 +40,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ strtoupper(app()->getLocale()) }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="{{ route('site.locale', ['locale' => 'pl']) }}">PL</a></li>
-                                    <li><a href="{{ route('site.locale', ['locale' => 'en']) }}">EN</a></li>
+                                    <li class="{{ app()->getLocale() == 'pl' ? 'disabled' : '' }}"><a href="{{ route('site.locale', ['locale' => 'pl']) }}">PL</a></li>
+                                    <li class="{{ app()->getLocale() == 'en' ? 'disabled' : '' }}"><a href="{{ route('site.locale', ['locale' => 'en']) }}">EN</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown user user-menu">

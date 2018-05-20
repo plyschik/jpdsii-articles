@@ -31,6 +31,7 @@ return [
     'site' => [
         'navbar' => [
             'dashboard' => 'Dashboard',
+            'signin' => 'Sign in',
             'search' => 'Search...'
         ],
         'alerts' => [

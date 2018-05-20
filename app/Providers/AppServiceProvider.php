@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Http\ViewComposers\DashboardRolesComposer;
+use App\Http\ViewComposers\CategoriesPanelComposer;
+use App\Http\ViewComposers\DashboardCategoriesComposer;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,8 +20,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::composer('partials.categories', 'App\Http\ViewComposers\CategoriesPanelComposer');
-        View::composer(['dashboard.articles.create', 'dashboard.articles.edit'], 'App\Http\ViewComposers\DashboardCategoriesComposer');
+        View::composer('partials.categories', CategoriesPanelComposer::class);
+        View::composer(['dashboard.articles.create', 'dashboard.articles.edit'], DashboardCategoriesComposer::class);
+        View::composer(['dashboard.users.create', 'dashboard.users.edit'], DashboardRolesComposer::class);
     }
 
     /**
