@@ -64,6 +64,11 @@ return [
                 'header' => 'Kategorie',
                 'list' => 'Lista kategorii',
                 'add' => 'Dodaj kategorię'
+            ],
+            'users' => [
+                'header' => 'Użytkownicy',
+                'list' => 'Lista użytkowników',
+                'add' => 'Dodaj użytkownika'
             ]
         ],
         'alerts' => [
@@ -79,6 +84,11 @@ return [
                 'added' => 'Kategoria została poprawnie dodana.',
                 'edited' => 'Kategoria została poprawnie zaktualizowana.',
                 'deleted' => 'Kategoria została poprawnie usunięta.'
+            ],
+            'users' => [
+                'added' => 'Użytkownik został poprawnie dodany.',
+                'edited' => 'Użytkownik została poprawnie zaktualizowany.',
+                'deleted' => 'Użytkownik został poprawnie usunięty.'
             ]
         ],
         'articles' => [
@@ -91,7 +101,6 @@ return [
                         'link' => 'Dodaj pierwszy artykuł!',
                         'back' => 'Powrót do listy artykułów.'
                     ]
-
                 ],
                 'headers' => [
                     'articles_list' => 'Lista artykułów'
@@ -166,6 +175,60 @@ return [
                     'name' => 'Nazwa:',
                     'submit' => 'Zaktualizuj kategorię'
                 ]
+            ]
+        ],
+        'users' => [
+            'list' => [
+                'callouts' => [
+                    'nousers' => [
+                        'header' => 'Lista użytkowników',
+                        'paragraph' => 'Brak użytkowników do wyświetlenia.',
+                        'search' => 'Brak wyników wyszukiwania dla frazy: <b>:query</b>',
+                        'link' => 'Dodaj pierwszego użytkownika!',
+                        'back' => 'Powrót do listy użytkowników.'
+                    ]
+                ],
+                'headers' => [
+                    'articles_list' => 'Lista użytkowników'
+                ],
+                'table' => [
+                    'headers' => [
+                        'id' => 'ID',
+                        'email' => 'Email',
+                        'first_name' => 'Imię',
+                        'last_name' => 'Nazwisko',
+                        'role' => 'Rola',
+                        'created_at' => 'Utworzono',
+                        'updated_at' => 'Zaktualizowano'
+                    ]
+                ],
+                'alert' => [
+                    'delete_confirm' => 'Potwierdź usunięcie użytkownika.'
+                ]
+            ],
+            'create' => [
+                'header' => 'Nowy użytkownik',
+                'form' => [
+                    'email' => 'Email:',
+                    'first_name' => 'Imię:',
+                    'last_name' => 'Nazwisko:',
+                    'password' => 'Hasło:',
+                    'password_confirm' => 'Hasło ponownie:',
+                    'role' => 'Rola:',
+                    'submit' => 'Dodaj użytkownika'
+                ]
+            ],
+            'edit' => [
+                'header' => 'Edycja użytkownika',
+                'form' => [
+                    'email' => 'Email:',
+                    'first_name' => 'Imię:',
+                    'last_name' => 'Nazwisko:',
+                    'submit' => 'Zaktualizuj użytkownika'
+                ]
+            ],
+            'delete' => [
+                'disabled_button_information' => 'Usuwać można tylko użytkowników z rangą inną niż administrator. Dodatkowo nie można usunąć swojego własnego konta.'
             ]
         ]
     ]

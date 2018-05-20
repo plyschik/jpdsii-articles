@@ -95,6 +95,16 @@
                                     <li><a href="{{ route('dashboard.categories.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.categories.add') }}</a></li>
                                 </ul>
                             </li>
+                            <li class="treeview{{ \Route::is('dashboard.users.*') ? ' active' : '' }}">
+                                <a href="#">
+                                    <i class="fa fa-th"></i> <span>{{ __('messages.dashboard.menu.users.header') }}</span>
+                                    <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ route('dashboard.users.list') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.users.list') }}</a></li>
+                                    <li><a href="{{ route('dashboard.users.create') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.users.add') }}</a></li>
+                                </ul>
+                            </li>
                         @endrole
                     </ul>
                 </section>

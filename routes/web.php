@@ -53,3 +53,15 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
     Route::post('/categories/edit/{category}', 'Dashboard\CategoriesController@update')->name('dashboard.categories.edit');
     Route::delete('/categories/{category}', 'Dashboard\CategoriesController@delete')->name('dashboard.categories.delete');
 });
+
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
+    Route::get('/users', 'Dashboard\UserController@list')->name('dashboard.users.list');
+    Route::get('/users/create', 'Dashboard\UserController@create')->name('dashboard.users.create');
+    Route::post('/users/create', 'Dashboard\UserController@store')->name('dashboard.users.create');
+    Route::get('/users/edit/{user}', 'Dashboard\UserController@edit')->name('dashboard.users.edit');
+    Route::patch('/users/edit/{user}', 'Dashboard\UserController@update')->name('dashboard.users.edit');
+    Route::delete('/users/{user}', 'Dashboard\UserController@delete')
+        ->name('dashboard.users.delete')
+        ->middleware('can:delete,user')
+    ;
+});

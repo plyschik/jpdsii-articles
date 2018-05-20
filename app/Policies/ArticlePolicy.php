@@ -10,6 +10,13 @@ class ArticlePolicy
 {
     use HandlesAuthorization;
 
+    public function before(User $user)
+    {
+        if ($user->hasRole('administrator')) {
+            return true;
+        }
+    }
+
     /**
      * Determine whether the user can update the article.
      *
@@ -19,7 +26,7 @@ class ArticlePolicy
      */
     public function update(User $user, Article $article)
     {
-        return $user->id === $article->user_id || $user->hasRole('administrator');
+        return $user->id === $article->user_id;
     }
 
     /**
@@ -31,6 +38,6 @@ class ArticlePolicy
      */
     public function delete(User $user, Article $article)
     {
-        return $user->id === $article->user_id || $user->hasRole('administrator');
+        return $user->id === $article->user_id;
     }
 }
