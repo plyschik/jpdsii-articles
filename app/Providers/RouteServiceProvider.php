@@ -29,8 +29,7 @@ class RouteServiceProvider extends ServiceProvider
         parent::boot();
 
         Route::model('user', User::class);
-    //    Route::model('article', Article::class);
-    //    Route::model('category', Category::class);
+        Route::model('category', Category::class);
 
         Route::bind('article', function ($value) {
             $article = Article::select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
@@ -39,12 +38,6 @@ class RouteServiceProvider extends ServiceProvider
             ;
 
             return $article ?? abort(404);
-        });
-
-        Route::bind('category', function ($value) {
-            $category = Category::select(['id', 'name'])->find($value);
-
-            return $category ?? abort(404);
         });
     }
 

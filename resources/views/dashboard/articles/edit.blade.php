@@ -18,13 +18,16 @@
                                     <span class="help-block">{{ $errors->first('title') }}</span>
                                 @endif
                             </div>
-                            <div class="form-group">
+                            <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
                                 <label for="category">Kategoria:</label>
-                                <select class="form-control select2" id="category" name="category">
+                                <select class="form-control select2" id="category" name="category_id">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}"{{ $category->id == $article->category->id ? ' selected' : '' }}>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                                @if ($errors->has('category_id'))
+                                    <span class="help-block">{{ $errors->first('category_id') }}</span>
+                                @endif
                             </div>
                             <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                                 <label for="exampleInputPassword1">{{ __('messages.dashboard.articles.edit.form.content') }}</label>

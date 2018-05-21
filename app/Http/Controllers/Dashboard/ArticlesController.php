@@ -18,18 +18,12 @@ class ArticlesController extends Controller
 
     public function store(StoreArticle $request)
     {
-        try {
-            $category = Category::findOrFail($request->get('category'));
-        } catch (ModelNotFoundException $exception) {
-            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
-        }
-
         $article = new Article([
             'title' => $request->get('title'),
             'content' => $request->get('content')
         ]);
         $article->user()->associate($request->user());
-        $article->category()->associate($category);
+        $article->category()->associate(Category::find($request->get('category_id')));
         $article->save();
 
         if (!$article) {
@@ -60,7 +54,7 @@ class ArticlesController extends Controller
         }
 
         return view('dashboard.articles.list', [
-            'articles' => $articles->paginate(10)
+            'articles' => $articles->paginate(config('site.limits.articles'))
         ]);
     }
 
@@ -72,13 +66,7 @@ class ArticlesController extends Controller
     public function update(Article $article, StoreArticle $request)
     {
         try {
-            $category = Category::findOrFail($request->get('category'));
-        } catch (ModelNotFoundException $exception) {
-            return back()->with('warning', __('messages.site.alerts.something_went_wrong'));
-        }
-
-        try {
-            $article->category()->associate($category);
+            $article->category()->associate(Category::find($request->get('category_id')));
             $article->update([
                 'title' => $request->get('title'),
                 'content' => $request->get('content')
