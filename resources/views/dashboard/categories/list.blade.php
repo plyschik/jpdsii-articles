@@ -29,7 +29,7 @@
                     <h3 class="box-title">{{ __('messages.dashboard.categories.list.headers.articles_list') }}</h3>
                     <div class="box-tools">
                         <form action="" method="GET">
-                            <div class="input-group input-group-sm">
+                            <div class="input-group input-group-sm" style="width: 200px;">
                                 <input name="search" class="form-control pull-right" placeholder="{{ __('messages.dashboard.navbar.search') }}" type="text" value="{{ \Request::get('search') }}">
                                 <div class="input-group-btn">
                                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
