@@ -7,5 +7,6 @@ return [
         'search' => [
             'articles' => 4
         ]
-    ]
+    ],
+    'locales' => ['pl', 'en']
 ];

@@ -9,8 +9,6 @@ class APIController extends Controller
 {
     public function search(Request $request)
     {
-        $articles = [];
-
         if ($request->get('query')) {
             $articles = Article::query()
                 ->select(['id', 'title'])
@@ -21,6 +19,6 @@ class APIController extends Controller
             ;
         }
 
-        return response()->json($articles);
+        return response()->json($articles ?? []);
     }
 }
