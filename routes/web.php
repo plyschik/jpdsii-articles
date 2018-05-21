@@ -53,7 +53,10 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
     Route::get('/categories/edit/{category}', 'Dashboard\CategoriesController@edit')->name('dashboard.categories.edit');
     Route::patch('/categories/edit/{category}', 'Dashboard\CategoriesController@update')->name('dashboard.categories.edit');
 
-    Route::delete('/categories/{category}', 'Dashboard\CategoriesController@delete')->name('dashboard.categories.delete');
+    Route::delete('/categories/{category}', 'Dashboard\CategoriesController@delete')
+        ->name('dashboard.categories.delete')
+        ->middleware('can:delete,category')
+    ;
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {

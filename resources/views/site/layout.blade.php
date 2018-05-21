@@ -37,6 +37,11 @@
             </div>
         </nav>
         <div class="container mt-3">
+            @if (session()->has('alert'))
+                <div class="alert alert-danger">
+                    {{ session()->get('alert') }}
+                </div>
+            @endif
             @yield('content')
         </div>
         <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>

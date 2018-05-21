@@ -49,12 +49,8 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
-        if ($exception instanceof UnauthorizedException) {
-            return response()->redirectToRoute('site.articles.list');
-        }
-
         if ($exception instanceof AuthorizationException) {
-            return response()->redirectToRoute('site.articles.list');
+            return response()->redirectToRoute('site.articles.list')->with('alert', '403 Forbidden.');
         }
 
         return parent::render($request, $exception);
