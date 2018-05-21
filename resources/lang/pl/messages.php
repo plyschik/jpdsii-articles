@@ -176,6 +176,9 @@ return [
                     'name' => 'Nazwa:',
                     'submit' => 'Zaktualizuj kategorię'
                 ]
+            ],
+            'delete' => [
+                'disabled_button_information' => 'Nie można usunąć kategorii, która zawiera artykuły.'
             ]
         ],
         'users' => [

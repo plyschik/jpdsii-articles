@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Spatie\Permission\Exceptions\UnauthorizedException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -49,7 +50,11 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof UnauthorizedException) {
-            return response()->redirectToRoute('front.articles.list');
+            return response()->redirectToRoute('site.articles.list');
+        }
+
+        if ($exception instanceof AuthorizationException) {
+            return response()->redirectToRoute('site.articles.list');
         }
 
         return parent::render($request, $exception);

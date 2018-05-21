@@ -9,10 +9,10 @@
                 </div>
             @else
                 <h2 class="mb-3">{{ __('messages.site.headers.articles_from_user') }}: {{ $articles->first()->user->fullName }}</h2>
-                @each ('partials.article', $articles, 'article')
+                @each('site.partials.article_short', $articles, 'article')
                 {{ $articles->links() }}
             @endif
         </div>
-        @include('partials.categories')
+        @include('site.partials.categories')
     </div>
 @endsection

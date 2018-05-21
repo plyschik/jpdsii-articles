@@ -8,7 +8,7 @@
         @else
             <div class="list-group list-group-flush">
                 @foreach ($categories as $category)
-                    <a href="{{ route('site.category.list', ['id' => $category->id]) }}" class="list-group-item list-group-item-action">{{ $category->name }} ({{ $category->articles_count }})</a>
+                    <a href="{{ route('site.categories.list', ['id' => $category->id]) }}" class="list-group-item list-group-item-action">{{ $category->name }} ({{ $category->articles_count }})</a>
                 @endforeach
             </div>
         @endif

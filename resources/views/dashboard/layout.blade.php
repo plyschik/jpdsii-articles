@@ -35,7 +35,7 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
                             <li>
-                                <a href="{{ route('front.articles.list') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
+                                <a href="{{ route('site.articles.list') }}">{{ __('messages.dashboard.navbar.mainpage') }}</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ strtoupper(app()->getLocale()) }} <span class="caret"></span></a>

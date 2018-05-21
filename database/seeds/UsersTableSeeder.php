@@ -15,28 +15,28 @@ class UsersTableSeeder extends Seeder
         $faker = \Faker\Factory::create();
 
         User::create([
-            'email'         => 'user1',
+            'email'         => 'user1@web.user',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password')
         ])->assignRole('editor');
 
         User::create([
-            'email'         => 'user2',
+            'email'         => 'user2@web.user',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password')
         ])->assignRole('administrator');
 
         User::create([
-            'email'         => 'user3',
+            'email'         => 'user3@web.user',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password')
         ])->assignRole('editor');
 
         User::create([
-            'email'         => 'user4',
+            'email'         => 'user4@web.user',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password')

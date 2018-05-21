@@ -31,5 +31,9 @@ class CategoriesTableSeeder extends Seeder
         Category::create([
             'name' => 'Amet fermentum'
         ]);
+
+        Category::create([
+            'name' => 'Lorem ipsum'
+        ]);
     }
 }

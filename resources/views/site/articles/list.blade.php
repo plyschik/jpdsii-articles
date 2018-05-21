@@ -8,10 +8,10 @@
                     {{ __('messages.site.alerts.no_articles') }}
                 </div>
             @else
-                @each ('partials.article', $articles, 'article')
+                @each('site.partials.article_short', $articles, 'article')
                 {{ $articles->links() }}
             @endif
         </div>
-        @include('partials.categories')
+        @include('site.partials.categories')
     </div>
 @endsection

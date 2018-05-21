@@ -11,7 +11,7 @@
 
 @section('content')
     <section class="content">
-        @include('partials.alert')
+        @include('dashboard.partials.alert')
 
         @if (!count($articles))
             <div class="callout callout-info">

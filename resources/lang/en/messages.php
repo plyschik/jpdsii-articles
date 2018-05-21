@@ -176,6 +176,9 @@ return [
                     'name' => 'Name:',
                     'submit' => 'Update category'
                 ]
+            ],
+            'delete' => [
+                'disabled_button_information' => 'You can not delete category with articles.'
             ]
         ],
         'users' => [

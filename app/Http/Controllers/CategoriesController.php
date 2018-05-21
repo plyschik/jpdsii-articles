@@ -6,7 +6,7 @@ use App\Article;
 
 class CategoriesController extends Controller
 {
-    public function listOfArticlesOfCategory($id)
+    public function list($id)
     {
         $articles = Article::select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
             ->with(['user:id,first_name,last_name', 'category:id,name'])

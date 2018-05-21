@@ -1,11 +1,11 @@
-@if (Session::has('success'))
+@if (session()->has('success'))
     <div class="callout callout-success">
         <h4>{{ __('messages.dashboard.alerts.headers.information') }}</h4>
-        <p>{{ Session::get('success') }}</p>
+        <p>{{ session()->get('success') }}</p>
     </div>
-@elseif (Session::has('warning'))
+@elseif (session()->has('warning'))
     <div class="callout callout-warning">
         <h4>{{ __('messages.dashboard.alerts.headers.information') }}</h4>
-        <p>{{ Session::get('warning') }}</p>
+        <p>{{ session()->get('warning') }}</p>
     </div>
 @endif

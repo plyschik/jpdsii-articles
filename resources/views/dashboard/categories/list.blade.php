@@ -11,7 +11,7 @@
 
 @section('content')
     <section class="content">
-        @include('partials.alert')
+        @include('dashboard.partials.alert')
 
         @if (!count($categories))
             <div class="callout callout-info">
@@ -61,7 +61,7 @@
                                     <td class="text-center">
                                         <form class="delete-form" action="{{ route('dashboard.categories.delete', ['id' => $category->id]) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-danger" type="submit">
+                                            <button class="btn btn-danger" @cannot('delete', $category) disabled="disabled" title="{{ __('messages.dashboard.categories.delete.disabled_button_information') }}" @endcannot type="submit">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                             @csrf

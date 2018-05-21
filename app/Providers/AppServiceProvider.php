@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        View::composer('partials.categories', CategoriesPanelComposer::class);
+        View::composer('site.partials.categories', CategoriesPanelComposer::class);
         View::composer(['dashboard.articles.create', 'dashboard.articles.edit'], DashboardCategoriesComposer::class);
         View::composer(['dashboard.users.create', 'dashboard.users.edit'], DashboardRolesComposer::class);
     }
