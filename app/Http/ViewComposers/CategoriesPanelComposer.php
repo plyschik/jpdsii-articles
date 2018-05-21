@@ -9,6 +9,15 @@ class CategoriesPanelComposer
 {
     public function compose(View $view)
     {
-        $view->with('categories', Category::withCount('articles')->orderByDesc('name')->limit(4)->get());
+        $categories = cache()->remember('categories', config('cache.ttl'), function () {
+            return Category::select(['id', 'name'])
+                ->withCount('articles')
+                ->orderBy('name')
+                ->limit(config('site.limits.categories'))
+                ->get()
+            ;
+        });
+
+        $view->with('categories', $categories);
     }
 }
