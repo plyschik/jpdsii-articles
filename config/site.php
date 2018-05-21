@@ -2,6 +2,10 @@
 
 return [
     'limits' => [
-        'categories' => 4
+        'articles' => 10,
+        'categories' => 4,
+        'search' => [
+            'articles' => 4
+        ]
     ]
 ];

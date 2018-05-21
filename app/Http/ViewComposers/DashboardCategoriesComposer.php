@@ -9,6 +9,11 @@ class DashboardCategoriesComposer
 {
     public function compose(View $view)
     {
-        $view->with('categories', Category::all());
+        $categories = Category::select(['id', 'name'])
+            ->orderBy('name')
+            ->get()
+        ;
+
+        $view->with('categories', $categories);
     }
 }

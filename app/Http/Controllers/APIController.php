@@ -16,7 +16,7 @@ class APIController extends Controller
                 ->select(['id', 'title'])
                 ->where('title', 'LIKE', "%{$request->get('query')}%")
                 ->orderByDesc('id')
-                ->limit(4)
+                ->limit(config('site.limits.search.articles'))
                 ->get()
             ;
         }

@@ -9,6 +9,11 @@ class DashboardRolesComposer
 {
     public function compose(View $view)
     {
-        $view->with('roles', Role::all());
+        $roles = Role::select(['id', 'name'])
+            ->orderBy('name')
+            ->get()
+        ;
+
+        $view->with('roles', $roles);
     }
 }

@@ -23,9 +23,9 @@ Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('pass
 Route::get('/locale/{locale}', 'LocaleController@locale')->name('site.locale');
 
 Route::get('/', 'ArticlesController@list')->name('front.articles.list');
-Route::get('/article/{id}', 'ArticlesController@show')->name('front.articles.show');
-Route::get('/category/{category}', 'CategoriesController@listOfArticlesOfCategory')->name('site.category.list');
-Route::get('/author/{user}', 'AuthorsController@listOfArticlesOfAuthor')->name('site.authors.list');
+Route::get('/article/{article}', 'ArticlesController@show')->name('front.articles.show');
+Route::get('/category/{id}', 'CategoriesController@listOfArticlesOfCategory')->name('site.category.list');
+Route::get('/author/{id}', 'AuthorsController@listOfArticlesOfAuthor')->name('site.authors.list');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/articles/create', 'Dashboard\ArticlesController@create')->name('dashboard.articles.create');

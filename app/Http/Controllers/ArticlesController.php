@@ -8,15 +8,17 @@ class ArticlesController extends Controller
 {
     public function list()
     {
-        return view('site.articles.list', [
-            'articles' => Article::with(['user', 'category'])->orderByDesc('created_at')->paginate(10)
-        ]);
+        $articles = Article::select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
+            ->with(['user:id,first_name,last_name', 'category:id,name'])
+            ->latest('id')
+            ->paginate(config('site.limits.articles'))
+        ;
+
+        return view('site.articles.list', compact('articles'));
     }
 
-    public function show($id)
+    public function show(Article $article)
     {
-        return view('site.articles.show', [
-            'article' => Article::findOrFail($id)
-        ]);
+        return view('site.articles.show', compact('article'));
     }
 }
