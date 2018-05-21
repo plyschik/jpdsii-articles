@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'locales' => ['pl', 'en'],
     'limits' => [
         'articles' => 10,
         'categories' => 4,
@@ -8,5 +9,11 @@ return [
             'articles' => 4
         ]
     ],
-    'locales' => ['pl', 'en']
+    'dashboard' => [
+        'limits' => [
+            'articles' => 10,
+            'categories' => 10,
+            'users' => 10
+        ]
+    ]
 ];

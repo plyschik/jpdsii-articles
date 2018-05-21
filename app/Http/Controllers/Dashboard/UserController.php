@@ -52,7 +52,7 @@ class UserController extends Controller
         }
 
         return view('dashboard.users.list', [
-            'users' => $users->paginate(10)
+            'users' => $users->paginate(config('site.dashboard.limits.users'))
         ]);
     }
 

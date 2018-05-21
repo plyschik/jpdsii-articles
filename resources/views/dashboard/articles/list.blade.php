@@ -77,7 +77,7 @@
                     </table>
                 </div>
             </div>
-            {{ $articles->links() }}
+            {{ $articles->appends(['search' => request()->get('search')])->links() }}
         @endif
     </section>
 @endsection

@@ -42,7 +42,7 @@ class CategoriesController extends Controller
         }
 
         return view('dashboard.categories.list', [
-            'categories' => $categories->paginate(10)
+            'categories' => $categories->paginate(config('site.dashboard.limits.categories'))
         ]);
     }
 

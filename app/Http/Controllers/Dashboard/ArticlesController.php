@@ -54,7 +54,7 @@ class ArticlesController extends Controller
         }
 
         return view('dashboard.articles.list', [
-            'articles' => $articles->paginate(config('site.limits.articles'))
+            'articles' => $articles->paginate(config('site.dashboard.limits.articles'))
         ]);
     }
 

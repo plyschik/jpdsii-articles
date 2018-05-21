@@ -79,7 +79,7 @@
                     </table>
                 </div>
             </div>
-            {{ $users->links() }}
+            {{ $users->appends(['search' => request()->get('search')])->links() }}
         @endif
     </section>
 @endsection
