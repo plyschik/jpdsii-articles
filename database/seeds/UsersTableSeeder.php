@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
+        $faker = app()->make('faker');
 
         User::create([
             'email'         => 'user1@web.user',

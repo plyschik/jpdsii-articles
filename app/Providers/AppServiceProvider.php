@@ -32,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->singleton('faker', function () {
+            $faker = \Faker\Factory::create();
+            $faker->seed(config('app.faker.seed'));
+
+            return $faker;
+        });
     }
 }

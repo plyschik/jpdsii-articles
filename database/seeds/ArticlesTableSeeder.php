@@ -12,7 +12,7 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = \Faker\Factory::create();
+        $faker = app()->make('faker');
 
         for ($i = 0; $i < 200; $i++) {
             Article::create([
