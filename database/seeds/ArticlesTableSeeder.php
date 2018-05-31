@@ -2,6 +2,7 @@
 
 use App\Article;
 use Illuminate\Database\Seeder;
+use Faker\Factory as FakerFactory;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class ArticlesTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = app()->make('faker');
+        $faker = resolve(FakerFactory::class);
 
         for ($i = 0; $i < 200; $i++) {
             Article::create([

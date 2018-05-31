@@ -2,6 +2,7 @@
 
 use App\User;
 use Illuminate\Database\Seeder;
+use Faker\Factory as FakerFactory;
 
 class UsersTableSeeder extends Seeder
 {
@@ -12,7 +13,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = app()->make('faker');
+        $faker = resolve(FakerFactory::class);
 
         User::create([
             'email'         => 'user1@web.user',
