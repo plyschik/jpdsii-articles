@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Faker\Factory as FakerFactory;
+use Illuminate\Support\ServiceProvider;
 
 class FakerProvider extends ServiceProvider
 {
