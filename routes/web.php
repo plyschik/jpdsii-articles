@@ -25,7 +25,7 @@ Route::get('/locale/{locale}', 'LocaleController@locale')->name('site.locale');
 Route::get('/', 'ArticlesController@list')->name('site.articles.list');
 Route::get('/category/{id}', 'CategoriesController@list')->name('site.categories.list');
 Route::get('/author/{id}', 'AuthorsController@list')->name('site.authors.list');
-Route::get('/article/{article}', 'ArticlesController@show')->name('site.articles.show');
+Route::get('/article/{id}', 'ArticlesController@show')->name('site.articles.show');
 
 Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
     Route::get('/articles/create', 'Dashboard\ArticlesController@create')->name('dashboard.articles.create');

@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
 use Illuminate\Http\Request;
+use App\Repository\ArticleRepository;
 
 class APIController extends Controller
 {
+    protected $articleRepository;
+
+    public function __construct(ArticleRepository $articleRepository)
+    {
+        $this->articleRepository = $articleRepository;
+    }
+
     public function search(Request $request)
     {
         if ($request->get('query')) {
-            $articles = Article::query()
-                ->select(['id', 'title'])
-                ->where('title', 'LIKE', "%{$request->get('query')}%")
-                ->orderByDesc('id')
-                ->limit(config('site.limits.search.articles'))
-                ->get()
-            ;
+            $articles = $this->articleRepository->getArticlesFromSearch($request->get('search'));
         }
 
         return response()->json($articles ?? []);

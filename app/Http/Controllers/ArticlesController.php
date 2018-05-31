@@ -2,23 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Article;
+use App\Repository\ArticleRepository;
 
 class ArticlesController extends Controller
 {
-    public function list()
-    {
-        $articles = Article::select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
-            ->with(['user:id,first_name,last_name', 'category:id,name'])
-            ->latest('id')
-            ->paginate(config('site.limits.articles'))
-        ;
+    protected $articleRepository;
 
-        return view('site.articles.list', compact('articles'));
+    public function __construct(ArticleRepository $articleRepository)
+    {
+        $this->articleRepository = $articleRepository;
     }
 
-    public function show(Article $article)
+    public function list()
     {
-        return view('site.articles.show', compact('article'));
+        return view('site.articles.list', [
+            'articles' => $this->articleRepository->getArticlesList()
+        ]);
+    }
+
+    public function show($id)
+    {
+        return view('site.articles.show', [
+            'article' => $this->articleRepository->getArticle($id)
+        ]);
     }
 }
