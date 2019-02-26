@@ -1,3 +1,9 @@
+window.$ = window.jQuery = require('jquery');
+window.Popper = require('popper.js').default;
+
+require('bootstrap');
+require('jquery-typeahead');
+
 $(document).ready(function () {
     $.typeahead({
         input: '.typeahead-search',
@@ -7,11 +13,11 @@ $(document).ready(function () {
         delay: 750,
         display: ['title'],
         href: function (item) {
-            return '/jpdsii-articles/public/article/' + item.id;
+            return '/article/' + item.id;
         },
         source: {
             ajax: {
-                url: '/jpdsii-articles/public/api/search',
+                url: '/api/search',
                 data: {
                     query: "{{query}}"
                 }

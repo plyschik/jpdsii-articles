@@ -3,8 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="{{ asset('bower_components/bootstrap4/dist/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('bower_components/jquery-typeahead/dist/jquery.typeahead.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/site.css') }}">
         <title>{{ config('app.name') }}</title>
     </head>
     <body>
@@ -44,10 +43,6 @@
             @endif
             @yield('content')
         </div>
-        <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
-        <script src="{{ asset('bower_components/popper.js/dist/popper.min.js') }}"></script>
-        <script src="{{ asset('bower_components/bootstrap4/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('bower_components/jquery-typeahead/dist/jquery.typeahead.min.js') }}"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/site.js') }}"></script>
     </body>
 </html>
