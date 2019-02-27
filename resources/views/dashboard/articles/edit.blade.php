@@ -1,5 +1,10 @@
 @extends('dashboard.layout')
 
+@section('stylesheets')
+    <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
+    @parent
+@endsection
+
 @section('content')
     <div class="content">
         <div class="row">
@@ -46,4 +51,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascripts')
+    @parent
+    <script src="{{ asset('js/select2.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
 @endsection

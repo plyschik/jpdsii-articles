@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('stylesheets')
-    <link rel="stylesheet" href="{{ asset('bower_components\select2\dist\css\select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
     @parent
 @endsection
 
@@ -54,7 +54,7 @@
 
 @section('javascripts')
     @parent
-    <script src="{{ asset('bower_components\select2\dist\js\select2.min.js') }}"></script>
+    <script src="{{ asset('js/select2.js') }}"></script>
     <script>
         $(document).ready(function() {
             $('.select2').select2();
