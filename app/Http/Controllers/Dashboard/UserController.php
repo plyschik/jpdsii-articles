@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\User;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreUser;
 use Spatie\Permission\Models\Role;
@@ -22,7 +23,8 @@ class UserController extends Controller
             'email' => $request->get('email'),
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
-            'password' => bcrypt($request->get('password'))
+            'password' => bcrypt($request->get('password')),
+            'api_token' => Str::random(60)
         ]);
 
         $user->assignRole(Role::find($request->get('role_id')));
