@@ -17,6 +17,7 @@ mix.js('resources/assets/js/site.js', 'public/js');
 mix.js('resources/assets/js/dashboard.js', 'public/js');
 mix.copy('node_modules/admin-lte/bower_components/select2/dist/css/select2.css', 'public/css/select2.css');
 mix.copy('node_modules/admin-lte/bower_components/select2/dist/js/select2.full.js', 'public/js/select2.js');
+mix.copy('node_modules/jquery-validation/dist/jquery.validate.min.js', 'public/js/jquery.validate.js');
 
 if (mix.inProduction()) {
     mix.version();
