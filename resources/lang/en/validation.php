@@ -138,7 +138,8 @@ return [
         'name' => [
             'required'  => 'Name is required.',
             'min'       => 'Name should have at least :min characters.',
-            'max'       => 'Name should not have greater than :max characters.'
+            'max'       => 'Name should not have greater than :max characters.',
+            'unique'    => 'Name should be unique.'
         ],
         'category' => [
             'exists'    => 'Selected category not exists.'

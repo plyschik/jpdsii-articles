@@ -137,7 +137,8 @@ return [
         'name' => [
             'required'  => 'Nazwa jest wymagana.',
             'min'       => 'Nazwa powinna mieć minimalnie :min znaków.',
-            'max'       => 'Nazwa powinna mieć maksymalnie :max znaków.'
+            'max'       => 'Nazwa powinna mieć maksymalnie :max znaków.',
+            'unique'    => 'Nazwa powinna być unikalna.'
         ],
         'category' => [
             'exists'    => 'Wybrana kategoria nie istnieje.'
