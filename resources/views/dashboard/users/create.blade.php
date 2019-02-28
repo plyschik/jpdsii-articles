@@ -1,7 +1,7 @@
 @extends('dashboard.layout')
 
 @section('stylesheets')
-    <link rel="stylesheet" href="{{ asset('bower_components\select2\dist\css\select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
     @parent
 @endsection
 
@@ -13,43 +13,43 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">{{ __('messages.dashboard.users.create.header') }}</h3>
                     </div>
-                    <form action="{{ route('dashboard.users.create') }}" method="POST">
+                    <form id="dashboard_user_create" action="{{ route('dashboard.users.create') }}" method="POST">
                         <div class="box-body">
                             <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="emailInput">{{ __('messages.dashboard.users.create.form.email') }}</label>
-                                <input class="form-control" id="emailInput" type="text" name="email" value="{{ old('email') }}">
+                                <label for="email">{{ __('messages.dashboard.users.create.form.email') }}</label>
+                                <input class="form-control" id="email" type="text" name="email" value="{{ old('email') }}">
                                 @if ($errors->has('email'))
                                     <span class="help-block">{{ $errors->first('email') }}</span>
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-                                <label for="firstNameInput">{{ __('messages.dashboard.users.create.form.first_name') }}</label>
-                                <input class="form-control" id="firstNameInput" type="text" name="first_name" value="{{ old('first_name') }}">
+                                <label for="first_name">{{ __('messages.dashboard.users.create.form.first_name') }}</label>
+                                <input class="form-control" id="first_name" type="text" name="first_name" value="{{ old('first_name') }}">
                                 @if ($errors->has('first_name'))
                                     <span class="help-block">{{ $errors->first('first_name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-                                <label for="lastNameInput">{{ __('messages.dashboard.users.create.form.last_name') }}</label>
-                                <input class="form-control" id="lastNameInput" type="text" name="last_name" value="{{ old('last_name') }}">
+                                <label for="last_name">{{ __('messages.dashboard.users.create.form.last_name') }}</label>
+                                <input class="form-control" id="last_name" type="text" name="last_name" value="{{ old('last_name') }}">
                                 @if ($errors->has('last_name'))
                                     <span class="help-block">{{ $errors->first('last_name') }}</span>
                                 @endif
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="passwordInput">{{ __('messages.dashboard.users.create.form.password') }}</label>
-                                <input class="form-control" id="passwordInput" type="password" name="password" value="{{ old('password') }}">
+                                <label for="password">{{ __('messages.dashboard.users.create.form.password') }}</label>
+                                <input class="form-control" id="password" type="password" name="password" value="{{ old('password') }}">
                                 @if ($errors->has('password'))
                                     <span class="help-block">{{ $errors->first('password') }}</span>
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="passwordConfirmInput">{{ __('messages.dashboard.users.create.form.password_confirm') }}</label>
-                                <input class="form-control" id="passwordConfirmInput" type="password" name="password_confirmation">
+                                <label for="password_confirmation">{{ __('messages.dashboard.users.create.form.password_confirm') }}</label>
+                                <input class="form-control" id="password_confirmation" type="password" name="password_confirmation">
                             </div>
                             <div class="form-group{{ $errors->has('role_id') ? ' has-error' : '' }}">
-                                <label for="category">{{ __('messages.dashboard.users.create.form.role') }}</label>
-                                <select class="form-control select2" id="role_id" name="role_id">
+                                <label for="role_id">{{ __('messages.dashboard.users.create.form.role') }}</label>
+                                <select class="form-control" id="role_id" name="role_id">
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}" {{ request()->get('role_id') == $role->id ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
@@ -60,7 +60,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <input class="btn btn-primary" type="submit" value="{{ __('messages.dashboard.users.create.form.submit') }}" />
+                            <button class="btn btn-primary" type="submit">{{ __('messages.dashboard.users.create.form.submit') }}</button>
                         </div>
                         @csrf
                     </form>
@@ -72,10 +72,90 @@
 
 @section('javascripts')
     @parent
-    <script src="{{ asset('bower_components\select2\dist\js\select2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.validate.js') }}"></script>
     <script>
         $(document).ready(function() {
-            $('.select2').select2();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.validator.addMethod("exists_in_array", function(value, element, parameter) {
+                return $.inArray(parseInt(value), parameter) > -1;
+            }, 'Please enter a valid value from array.');
+
+            $('#dashboard_user_create').validate({
+                rules: {
+                    email: {
+                        required: true,
+                        email: true,
+                        remote: {
+                            method: 'POST',
+                            url: '/api/users/exists'
+                        }
+                    },
+                    first_name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 32
+                    },
+                    last_name: {
+                        required: true,
+                        minlength: 2,
+                        maxlength: 32
+                    },
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    password_confirmation: {
+                        equalTo: '#password'
+                    },
+                    role_id: {
+                        required: true,
+                        exists_in_array: JSON.parse('@json($roles->pluck('id'))')
+                    }
+                },
+                messages: {
+                    email: {
+                        required: '{{ __('validation.custom.email.required') }}',
+                        email: '{{ __('validation.custom.email.format') }}',
+                        remote: '{{ __('validation.custom.email.unique') }}'
+                    },
+                    first_name: {
+                        required: '{{ __('validation.custom.first_name.required') }}',
+                        minlength: '{{ __('validation.custom.first_name.min', ['min' => 2]) }}',
+                        maxlength: '{{ __('validation.custom.first_name.max', ['max' => 32]) }}'
+                    },
+                    last_name: {
+                        required: '{{ __('validation.custom.content.required') }}',
+                        minlength: '{{ __('validation.custom.content.min', ['min' => 2]) }}',
+                        maxlength: '{{ __('validation.custom.content.max', ['max' => 32]) }}'
+                    },
+                    password: {
+                        required: '{{ __('validation.custom.password.required') }}',
+                        minlength: '{{ __('validation.custom.password.min', ['min' => 6]) }}'
+                    },
+                    password_confirmation: {
+                        equalTo: '{{ __('validation.custom.password.equals') }}'
+                    },
+                    role_id: {
+                        exists_in_array: '{{ __('validation.custom.role.exists') }}'
+                    }
+                },
+                errorElement: "span",
+                errorPlacement: function (error, element) {
+                    error.addClass("help-block");
+                    error.insertAfter(element);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).parent().addClass("has-error");
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).parent().removeClass("has-error");
+                }
+            });
         });
     </script>
 @endsection

@@ -143,6 +143,29 @@ return [
         ],
         'category' => [
             'exists'    => 'Selected category not exists.'
+        ],
+        'email' => [
+            'required'  => 'E-mail address is required.',
+            'format'    => 'E-mail address is invalid.',
+            'unique'    => 'E-mail address is already in use.'
+        ],
+        'first_name' => [
+            'required'  => 'First name is required.',
+            'min'       => 'First name should have at least :min characters.',
+            'max'       => 'First name should not have greater than :max characters.'
+        ],
+        'last_name' => [
+            'required'  => 'Last name is required.',
+            'min'       => 'Last name should have at least :min characters.',
+            'max'       => 'Last name should not have greater than :max characters.'
+        ],
+        'password' => [
+            'required'  => 'Password is required.',
+            'min'       => 'Password should have at least :min characters.',
+            'equals'    => 'Typed passwords is not equals.'
+        ],
+        'role' => [
+            'exists'    => 'Selected role not exists.'
         ]
     ],
 

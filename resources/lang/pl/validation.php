@@ -142,6 +142,29 @@ return [
         ],
         'category' => [
             'exists'    => 'Wybrana kategoria nie istnieje.'
+        ],
+        'email' => [
+            'required'  => 'Adres e-mail jest wymagany.',
+            'format'    => 'Adres e-mail ma niepoprawną formę.',
+            'unique'    => 'Adres e-mail jest już zajęty.'
+        ],
+        'first_name' => [
+            'required'  => 'Imię jest wymagane.',
+            'min'       => 'Imię powinno mieć minimalnie :min znaków.',
+            'max'       => 'Imię powinno mieć maksymalnie :max znaków.'
+        ],
+        'last_name' => [
+            'required'  => 'Nazwisko jest wymagane.',
+            'min'       => 'Nazwisko powinno mieć minimalnie :min znaków.',
+            'max'       => 'Nazwisko powinno mieć maksymalnie :max znaków.'
+        ],
+        'password' => [
+            'required'  => 'Hasło jest wymagane.',
+            'min'       => 'Hasło powinno mieć minimalnie :min znaków.',
+            'equals'    => 'Wpisane hasła nie są identyczne.'
+        ],
+        'role' => [
+            'exists'    => 'Wybrana rola nie istnieje.'
         ]
     ],
 

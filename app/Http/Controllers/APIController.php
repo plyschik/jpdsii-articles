@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
@@ -27,10 +28,19 @@ class APIController extends Controller
 
     public function categoryNameUniqueCheck(Request $request): JsonResponse
     {
-        if (Category::where('name', $request->get('name'))->exists()) {
-            return response()->json(false);
-        } else {
-            return response()->json(true);
+        $qb = Category::where('name', $request->get('name'));
+
+        return response()->json($qb->doesntExist());
+    }
+
+    public function userEmailUniqueCheck(Request $request): JsonResponse
+    {
+        $qb = User::where('email', $request->get('email'));
+
+        if ($request->has('user_id')) {
+            $qb->where('id', '<>', $request->get('user_id'));
         }
+
+        return response()->json($qb->doesntExist());
     }
 }

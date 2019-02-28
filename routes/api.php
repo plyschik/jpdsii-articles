@@ -13,3 +13,4 @@
 
 Route::get('/search', 'APIController@search');
 Route::post('/categories/exists', 'APIController@categoryNameUniqueCheck');
+Route::post('/users/exists', 'APIController@userEmailUniqueCheck');
