@@ -21,6 +21,7 @@ Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetFor
 Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
 Route::get('/locale/{locale}', 'LocaleController@locale')->name('site.locale');
+Route::post('/theme', 'ThemeController@change')->name('site.theme');
 
 Route::get('/', 'ArticlesController@list')->name('site.articles.list');
 Route::get('/category/{id}', 'CategoriesController@list')->name('site.categories.list');

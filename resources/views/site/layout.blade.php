@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="{{ asset('css/site.css') }}">
+        @if (request()->cookies->has('theme'))
+            <link rel="stylesheet" href="{{ asset('css/' . request()->cookie('theme') . '.css') }}">
+        @endif
         <title>{{ config('app.name') }}</title>
     </head>
     <body>
@@ -42,6 +45,19 @@
                 </div>
             @endif
             @yield('content')
+        </div>
+        <div class="p-3 bg-dark text-white">
+            <div class="container d-flex justify-content-between align-items-center">
+                <span>Copyright &copy; 2019</span>
+                <form class="form-inline" method="POST" action="{{ route('site.theme') }}">
+                    <select class="form-control" name="theme" onchange="this.form.submit();">
+                        @foreach (['default', 'darkly', 'solar'] as $theme)
+                            <option value="{{ $theme }}" @if (request()->cookie('theme') === $theme) selected="selected" @endif>{{ ucfirst($theme) }}</option>
+                        @endforeach
+                    </select>
+                    @csrf
+                </form>
+            </div>
         </div>
         <script src="{{ asset('js/site.js') }}"></script>
     </body>
