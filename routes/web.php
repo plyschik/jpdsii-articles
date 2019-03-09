@@ -77,4 +77,5 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
     Route::get('/stats/live', 'Dashboard\StatsController@live')->name('dashboard.stats.live');
+    Route::get('/stats/report', 'Dashboard\StatsController@report')->name('dashboard.stats.report');
 });

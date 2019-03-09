@@ -20,7 +20,9 @@ class ArticlesTableSeeder extends Seeder
                 'user_id'       => mt_rand(1, 4),
                 'category_id'   => mt_rand(1, 5),
                 'title'         => $faker->sentence(8),
-                'content'       => $faker->text(2048)
+                'content'       => $faker->text(2048),
+                'created_at'    => $datetime = $faker->dateTime(),
+                'updated_at'    => $datetime
             ]);
         }
     }

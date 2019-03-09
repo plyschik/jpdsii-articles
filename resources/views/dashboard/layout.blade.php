@@ -109,7 +109,7 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ route('dashboard.stats.live') }}"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.stats.live') }}</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.stats.report') }}</a></li>
+                                    <li><a href="{{ route('dashboard.stats.report') }}" target="_blank"><i class="fa fa-circle-o"></i> {{ __('messages.dashboard.menu.stats.report') }}</a></li>
                                 </ul>
                             </li>
                         @endrole
