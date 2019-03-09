@@ -56,9 +56,9 @@
                 messages: {
                     name: {
                         required: '{{ __('validation.custom.name.required') }}',
-                        minlength: '{{ __('validation.custom.name.min', ['min' => 8]) }}',
-                        maxlength: '{{ __('validation.custom.name.max', ['max' => 128]) }}',
-                        remote: '{{ __('validation.custom.name.unique', ['max' => 128]) }}'
+                        minlength: '{{ __('validation.custom.name.min', ['min' => 4]) }}',
+                        maxlength: '{{ __('validation.custom.name.max', ['max' => 64]) }}',
+                        remote: '{{ __('validation.custom.name.unique') }}'
                     }
                 },
                 errorElement: "span",

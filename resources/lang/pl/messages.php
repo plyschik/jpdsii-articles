@@ -70,6 +70,11 @@ return [
                 'header' => 'Użytkownicy',
                 'list' => 'Lista użytkowników',
                 'add' => 'Dodaj użytkownika'
+            ],
+            'stats' => [
+                'header' => 'Statystyki',
+                'live' => 'Na żywo',
+                'report' => 'Raport'
             ]
         ],
         'alerts' => [
@@ -233,6 +238,18 @@ return [
             ],
             'delete' => [
                 'disabled_button_information' => 'Usuwać można tylko użytkowników z rangą inną niż administrator. Dodatkowo nie można usunąć swojego własnego konta.'
+            ]
+        ],
+        'stats' => [
+            'live' => [
+                'header' => 'Użytkownicy online',
+                'chart' => [
+                    'axes' => [
+                        'x' => 'Godzina',
+                        'y' => 'Użytkowników online'
+                    ],
+                    'dataset' => 'Użytkownicy online'
+                ]
             ]
         ]
     ]

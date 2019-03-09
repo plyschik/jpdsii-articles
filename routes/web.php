@@ -74,3 +74,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
         ->middleware('can:delete,user')
     ;
 });
+
+Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
+    Route::get('/stats/live', 'Dashboard\StatsController@live')->name('dashboard.stats.live');
+});

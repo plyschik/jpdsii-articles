@@ -70,6 +70,11 @@ return [
                 'header' => 'Users',
                 'list' => 'Users list',
                 'add' => 'Add user'
+            ],
+            'stats' => [
+                'header' => 'Stats',
+                'live' => 'Live',
+                'report' => 'Report'
             ]
         ],
         'alerts' => [
@@ -233,6 +238,18 @@ return [
             ],
             'delete' => [
                 'disabled_button_information' => 'You can only delete users with role different from administrator. Additionally you can not delete yourself account.'
+            ]
+        ],
+        'stats' => [
+            'live' => [
+                'header' => 'Users online',
+                'chart' => [
+                    'axes' => [
+                        'x' => 'Time',
+                        'y' => 'Users online'
+                    ],
+                    'dataset' => 'Users online'
+                ]
             ]
         ]
     ]
