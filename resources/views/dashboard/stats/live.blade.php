@@ -63,10 +63,11 @@
 
         $.ajax({
             method: 'GET',
-            url: '/api/users/online?initialization',
+            url: '/api/users/online',
             dataType: 'json',
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Bearer {{ Auth::user()->api_token }}');
+                xhr.setRequestHeader('Initialization', true);
             },
             success: function (response) {
                 response.data.forEach(function (item) {

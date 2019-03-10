@@ -4,111 +4,125 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Category;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Repository\ArticleRepository;
-use Illuminate\Support\Facades\Cache;
 
 class APIController extends Controller
 {
-    protected $articleRepository;
+    private $articleRepository;
 
     public function __construct(ArticleRepository $articleRepository)
     {
         $this->articleRepository = $articleRepository;
     }
 
-    public function search(Request $request)
+    public function search(): JsonResponse
     {
-        if ($request->get('query')) {
-            $articles = $this->articleRepository->getArticlesFromSearch($request->get('search'));
+        if (request()->get('query')) {
+            $articles = $this->articleRepository->getArticlesFromSearch(request()->get('query'));
         }
 
         return response()->json($articles ?? []);
     }
 
-    public function categoryNameUniqueCheck(Request $request): JsonResponse
+    public function categoryNameUniqueCheck(): JsonResponse
     {
-        $qb = Category::where('name', $request->get('name'));
+        $qb = Category::where('name', request()->get('name'));
 
         return response()->json($qb->doesntExist());
     }
 
-    public function userEmailUniqueCheck(Request $request): JsonResponse
+    public function userEmailUniqueCheck(): JsonResponse
     {
-        $qb = User::where('email', $request->get('email'));
+        $qb = User::where('email', request()->get('email'));
 
-        if ($request->has('user_id')) {
-            $qb->where('id', '<>', $request->get('user_id'));
+        if (request()->has('user_id')) {
+            $qb->where('id', '<>', request()->get('user_id'));
         }
 
         return response()->json($qb->doesntExist());
     }
 
-    public function usersOnline()
+    public function usersOnline(): JsonResponse
     {
-        if (!Cache::has('users_online')) {
-            Cache::put('users_online', mt_rand(1, 2), 5);
-        }
-
-        $current = Cache::get('users_online');
-
-        if (request()->query->has('initialization')) {
+        if (request()->headers->has('Initialization')) {
             $periods = new \DatePeriod(
                 new \DateTime('-60 seconds'),
                 new \DateInterval('PT5S'),
                 new \DateTime('+5 seconds')
             );
 
-            $data = [];
-            foreach ($periods as $key => $value) {
-                $rand = mt_rand(1, 2);
-
-                if ($current - $rand < 0) {
-                    $current += $rand;
-                } else {
-                    if (mt_rand(0, 1)) {
-                        $current += $rand;
-                    } else {
-                        $current -= $rand;
-                    }
-                }
-
-                $data[] = [
-                    'time' => $value->format('H:i:s'),
-                    'count' => $current
-                ];
-            }
-
-            Cache::forget('users_online');
-            Cache::put('users_online', $current, 5);
-
             return response()->json([
-                'data' => $data
+                'data' => $this->getRandomUsersCountForPeriods($periods)
+            ]);
+        } else {
+            return response()->json([
+                'time' => (new \DateTime())->format('H:i:s'),
+                'count' => $this->getRandomUsersCount()
             ]);
         }
+    }
 
-        $rand = mt_rand(1, 2);
+    private function getCurrentUsersCount(): int
+    {
+        if (!cache()->has('users_online')) {
+            cache()->put('users_online', mt_rand(1, 2), 5);
+        }
 
-        if ($current - $rand < 0) {
-            $current += $rand;
+        return cache()->get('users_online');
+    }
 
-            Cache::increment('users_online', $rand);
+    private function getRandomUsersCountForPeriods(\DatePeriod $periods): array
+    {
+        $data = [];
+        foreach ($periods as $key => $period) {
+            $currentUsersCount = $this->getCurrentUsersCount();
+            $randomCount = mt_rand(1, 2);
+
+            if ($currentUsersCount - $randomCount < 0) {
+                $currentUsersCount += $randomCount;
+            } else {
+                if (mt_rand(0, 1)) {
+                    $currentUsersCount += $randomCount;
+                } else {
+                    $currentUsersCount -= $randomCount;
+                }
+            }
+
+            $this->saveUsersCountToCache($currentUsersCount);
+
+            $data[] = [
+                'time' => $period->format('H:i:s'),
+                'count' => $currentUsersCount
+            ];
+        }
+
+        return $data;
+    }
+
+    private function getRandomUsersCount(): int
+    {
+        $currentUsersCount = $this->getCurrentUsersCount();
+        $randomCount = mt_rand(1, 2);
+
+        if ($currentUsersCount - $randomCount < 0) {
+            $currentUsersCount += $randomCount;
         } else {
             if (mt_rand(0, 1)) {
-                $current += $rand;
-
-                Cache::increment('users_online', $rand);
+                $currentUsersCount += $randomCount;
             } else {
-                $current -= $rand;
-
-                Cache::decrement('users_online', $rand);
+                $currentUsersCount -= $randomCount;
             }
         }
 
-        return response()->json([
-            'time' => date('H:i:s', time()),
-            'count' => $current
-        ]);
+        $this->saveUsersCountToCache($currentUsersCount);
+
+        return $currentUsersCount;
+    }
+
+    private function saveUsersCountToCache(int $currentUsersCount): void
+    {
+        cache()->forget('users_online');
+        cache()->put('users_online', $currentUsersCount, 5);
     }
 }

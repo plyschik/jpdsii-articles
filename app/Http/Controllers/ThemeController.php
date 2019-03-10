@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cookie;
-
 class ThemeController extends Controller
 {
-    public function change(Request $request)
+    public function change()
     {
-        if (!in_array($request->theme, ['darkly', 'solar'])) {
-            return redirect()->back()->withCookie(Cookie::forget('theme'));
+        if (!in_array(request()->theme, config('site.themes'))) {
+            return redirect()->back()->withCookie(cookie()->forget('theme'));
         }
 
-        return redirect()->back()->withCookie(cookie('theme', $request->theme, 60 * 24 * 30));
+        return redirect()->back()->withCookie(cookie('theme', request()->theme, 60 * 24 * 30));
     }
 }

@@ -2,6 +2,7 @@
 
 return [
     'locales' => ['pl', 'en'],
+    'themes' => ['darkly', 'solar'],
     'limits' => [
         'articles' => 10,
         'categories' => 4,

@@ -35,16 +35,15 @@ class UserController extends Controller
 
         return redirect()
             ->route('dashboard.users.list')
-            ->with('success', __('messages.dashboard.alerts.users.added'))
-        ;
+            ->with('success', __('messages.dashboard.alerts.users.added'));
     }
 
-    public function list(Request $request)
+    public function list()
     {
         $users = User::with(['roles'])->latest('id');
 
-        if ($request->has('search')) {
-            $search = $request->get('search');
+        if (request()->has('search')) {
+            $search = request()->get('search');
 
             $users
                 ->where('email', 'LIKE', "{$search}%")
@@ -85,8 +84,7 @@ class UserController extends Controller
 
         return redirect()
             ->route('dashboard.users.list')
-            ->with('success', __('messages.dashboard.alerts.users.edited'))
-        ;
+            ->with('success', __('messages.dashboard.alerts.users.edited'));
     }
 
     public function delete(User $user)

@@ -27,16 +27,15 @@ class CategoriesController extends Controller
 
         return redirect()
             ->route('dashboard.categories.list')
-            ->with('success', __('messages.dashboard.alerts.categories.added'))
-        ;
+            ->with('success', __('messages.dashboard.alerts.categories.added'));
     }
 
-    public function list(Request $request)
+    public function list()
     {
         $categories = Category::query()->latest('id');
 
-        if ($request->has('search')) {
-            $search = $request->get('search');
+        if (request()->has('search')) {
+            $search = request()->get('search');
 
             $categories->where('name', 'LIKE', "{$search}%");
         }
@@ -63,8 +62,7 @@ class CategoriesController extends Controller
 
         return redirect()
             ->route('dashboard.categories.list')
-            ->with('success', __('messages.dashboard.alerts.categories.edited'))
-        ;
+            ->with('success', __('messages.dashboard.alerts.categories.edited'));
     }
 
     public function delete(Category $category)

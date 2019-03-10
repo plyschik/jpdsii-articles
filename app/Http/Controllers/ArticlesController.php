@@ -6,7 +6,7 @@ use App\Repository\ArticleRepository;
 
 class ArticlesController extends Controller
 {
-    protected $articleRepository;
+    private $articleRepository;
 
     public function __construct(ArticleRepository $articleRepository)
     {

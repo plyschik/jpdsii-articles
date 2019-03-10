@@ -32,8 +32,7 @@ class ArticlesController extends Controller
 
         return redirect()
             ->route('dashboard.articles.list')
-            ->with('success', __('messages.dashboard.alerts.articles.added'))
-        ;
+            ->with('success', __('messages.dashboard.alerts.articles.added'));
     }
 
     public function list(Request $request)
@@ -49,8 +48,7 @@ class ArticlesController extends Controller
 
             $articles
                 ->where('title', 'LIKE', "{$search}%")
-                ->orWhere('content', 'LIKE', "{$search}%")
-            ;
+                ->orWhere('content', 'LIKE', "{$search}%");
         }
 
         return view('dashboard.articles.list', [
@@ -77,8 +75,7 @@ class ArticlesController extends Controller
 
         return redirect()
             ->route('dashboard.articles.list')
-            ->with('success', __('messages.dashboard.alerts.articles.edited'))
-        ;
+            ->with('success', __('messages.dashboard.alerts.articles.edited'));
     }
 
     public function delete(Article $article)
