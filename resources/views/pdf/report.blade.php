@@ -8,9 +8,9 @@
         </style>
     </head>
     <body>
-        <h1 style="text-align: center; margin: 0 0 15px 0;">Raport</h1>
+        <h2 style="text-align: center; margin: 0 0 10px 0;">Raport</h2>
 
-        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 20px;">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 15px;">
             <tbody>
                 <tr>
                     <td style="padding: 5px 0; text-align: center; font-weight: bold; border: 1px solid #000;">System w liczbach</td>
@@ -51,7 +51,7 @@
             </tbody>
         </table>
 
-        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px;">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 15px;">
             <tbody>
                 <tr>
                     <td style="padding: 5px 0; text-align: center; font-weight: bold; border: 1px solid #000;">Kategorie</td>
@@ -64,7 +64,7 @@
             </tbody>
         </table>
 
-        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 20px;">
+        <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-top: 15px;">
             <tbody>
             <tr>
                 <td style="padding: 5px 0; text-align: center; font-weight: bold; border: 1px solid #000;">Użytkownicy</td>
@@ -76,5 +76,9 @@
             </tr>
             </tbody>
         </table>
+
+        <div style="font-size: 0.75em; margin-top: 15px; text-align: center;">
+            Raport wygenerowany dnia {{ $datetime }} przez {{ $creator }}.
+        </div>
     </body>
 </html>

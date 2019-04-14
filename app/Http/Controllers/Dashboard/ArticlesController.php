@@ -47,8 +47,8 @@ class ArticlesController extends Controller
             $search = $request->get('search');
 
             $articles
-                ->where('title', 'LIKE', "{$search}%")
-                ->orWhere('content', 'LIKE', "{$search}%");
+                ->where('title', 'LIKE', "%{$search}%")
+                ->orWhere('content', 'LIKE', "%{$search}%");
         }
 
         return view('dashboard.articles.list', [

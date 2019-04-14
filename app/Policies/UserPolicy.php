@@ -12,11 +12,12 @@ class UserPolicy
     /**
      * Determine whether the user can delete the model.
      *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
-     * @return mixed
+     * @param  \App\User $user
+     * @param  \App\User $model
+     *
+     * @return bool
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user, User $model): bool
     {
         return ($model->id !== $user->id) && !$model->hasRole('administrator');
     }

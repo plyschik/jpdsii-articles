@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\User;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
 use App\Http\Requests\StoreUser;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -46,9 +45,9 @@ class UserController extends Controller
             $search = request()->get('search');
 
             $users
-                ->where('email', 'LIKE', "{$search}%")
-                ->orWhere('first_name', 'LIKE', "{$search}%")
-                ->orWhere('last_name', 'LIKE', "{$search}%")
+                ->where('email', 'LIKE', "%{$search}%")
+                ->orWhere('first_name', 'LIKE', "%{$search}%")
+                ->orWhere('last_name', 'LIKE', "%{$search}%")
             ;
         }
 

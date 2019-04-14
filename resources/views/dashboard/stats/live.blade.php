@@ -87,7 +87,7 @@
                 url: '/api/users/online',
                 dataType: 'json',
                 beforeSend: function (xhr) {
-                    xhr.setRequestHeader('Authorization', 'Bearer {{ Auth::user()->api_token }}');
+                    xhr.setRequestHeader('Authorization', 'Bearer {{ auth()->user()->api_token }}');
                 },
                 success: function (response) {
                     if (config.data.labels.length >= 13) {

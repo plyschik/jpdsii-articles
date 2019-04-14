@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,8 +43,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => 'auth'], function () {
 
     Route::delete('/articles/{article}', 'Dashboard\ArticlesController@delete')
         ->name('dashboard.articles.delete')
-        ->middleware('can:delete,article')
-    ;
+        ->middleware('can:delete,article');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
@@ -56,8 +57,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
 
     Route::delete('/categories/{category}', 'Dashboard\CategoriesController@delete')
         ->name('dashboard.categories.delete')
-        ->middleware('can:delete,category')
-    ;
+        ->middleware('can:delete,category');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {
@@ -71,8 +71,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administra
 
     Route::delete('/users/{user}', 'Dashboard\UserController@delete')
         ->name('dashboard.users.delete')
-        ->middleware('can:delete,user')
-    ;
+        ->middleware('can:delete,user');
 });
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['auth', 'role:administrator']], function () {

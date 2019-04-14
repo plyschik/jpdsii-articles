@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\User;
 use App\Article;
 use App\Category;
+use Carbon\Carbon;
 use Amenadiel\JpGraph\Graph\Graph;
 use Amenadiel\JpGraph\Plot\BarPlot;
 use Amenadiel\JpGraph\Plot\PiePlot;
@@ -24,6 +25,8 @@ class StatsController extends Controller
 
     public function report()
     {
+        $carbon = Carbon::now();
+
         $this->articlesChart();
         $this->categoriesChart();
         $this->usersChart();
@@ -32,10 +35,14 @@ class StatsController extends Controller
         $pdf = PDF::loadView('pdf.report', [
             'articlesCount' => Article::count(),
             'categoriesCount' => Category::count(),
-            'usersCount' => User::count()
+            'usersCount' => User::count(),
+            'datetime' => $carbon->format('d-m-Y \o H:i:s'),
+            'creator' => auth()->user()->fullName
         ]);
 
-        return $pdf->stream('report.pdf');
+        $documentName = "report-" . $carbon->format('d-m-Y-H-i-s') . ".pdf";
+
+        return $pdf->stream($documentName);
     }
 
     private function articlesChart()

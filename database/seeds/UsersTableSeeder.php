@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         $faker = resolve(FakerFactory::class);
 
         User::create([
-            'email'         => 'user1@web.user',
+            'email'         => 'editor@articles.paw',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password'),
@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
         ])->assignRole('editor');
 
         User::create([
-            'email'         => 'user2@web.user',
+            'email'         => 'administrator@articles.paw',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password'),
@@ -33,7 +33,7 @@ class UsersTableSeeder extends Seeder
         ])->assignRole('administrator');
 
         User::create([
-            'email'         => 'user3@web.user',
+            'email'         => 'editor2@articles.paw',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password'),
@@ -41,7 +41,7 @@ class UsersTableSeeder extends Seeder
         ])->assignRole('editor');
 
         User::create([
-            'email'         => 'user4@web.user',
+            'email'         => 'administrator2@articles.paw',
             'first_name'    => $faker->firstName,
             'last_name'     => $faker->lastName,
             'password'      => bcrypt('password'),

@@ -3,39 +3,32 @@
 namespace App;
 
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes, HasRoles;
+    use HasRoles, SoftDeletes;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'password',
+        'first_name',
+        'last_name',
+        'email',
+        'password'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token'
     ];
 
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return sprintf('%s %s', $this->first_name, $this->last_name);
     }
 
     public function articles()
     {
-        return $this->hasMany('App\Article');
+        return $this->hasMany(Article::class);
     }
 }

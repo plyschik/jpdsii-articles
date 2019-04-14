@@ -15,9 +15,10 @@ class CategoryPolicy
      *
      * @param  \App\User  $user
      * @param  \App\Category  $category
-     * @return mixed
+     *
+     * @return bool
      */
-    public function delete(User $user, Category $category)
+    public function delete(User $user, Category $category): bool
     {
         return !$category->articles()->count();
     }

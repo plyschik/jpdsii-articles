@@ -20,7 +20,7 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="#"><b>JPDSII</b> Articles</a>
+                <a href="{{ route('site.articles.list') }}"><b>JPDSII</b> Articles</a>
             </div>
             <div class="login-box-body">
                 @yield('content')

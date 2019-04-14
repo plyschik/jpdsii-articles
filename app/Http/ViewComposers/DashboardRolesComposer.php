@@ -11,8 +11,7 @@ class DashboardRolesComposer
     {
         $roles = Role::select(['id', 'name'])
             ->orderBy('name')
-            ->get()
-        ;
+            ->get();
 
         $view->with('roles', $roles);
     }

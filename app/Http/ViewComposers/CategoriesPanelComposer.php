@@ -14,8 +14,7 @@ class CategoriesPanelComposer
                 ->withCount('articles')
                 ->orderBy('name')
                 ->limit(config('site.limits.categories'))
-                ->get()
-            ;
+                ->get();
         });
 
         $view->with('categories', $categories);

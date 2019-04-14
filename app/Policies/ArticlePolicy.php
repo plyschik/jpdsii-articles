@@ -10,7 +10,14 @@ class ArticlePolicy
 {
     use HandlesAuthorization;
 
-    public function before(User $user)
+    /**
+     * Skip policy checking if user has administrator role.
+     *
+     * @param User $user
+     *
+     * @return bool
+     */
+    public function before(User $user): bool
     {
         if ($user->hasRole('administrator')) {
             return true;
@@ -22,9 +29,10 @@ class ArticlePolicy
      *
      * @param  \App\User  $user
      * @param  \App\Article  $article
-     * @return mixed
+     *
+     * @return bool
      */
-    public function update(User $user, Article $article)
+    public function update(User $user, Article $article): bool
     {
         return $article->user->id === $user->id;
     }
@@ -32,11 +40,12 @@ class ArticlePolicy
     /**
      * Determine whether the user can delete the article.
      *
-     * @param  \App\User  $user
-     * @param  \App\Article  $article
-     * @return mixed
+     * @param  \App\User $user
+     * @param  \App\Article $article
+     *
+     * @return bool
      */
-    public function delete(User $user, Article $article)
+    public function delete(User $user, Article $article): bool
     {
         return $article->user->id === $user->id;
     }

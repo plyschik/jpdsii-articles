@@ -61,7 +61,7 @@
                                     <td class="text-center">
                                         <form class="delete-form" action="{{ route('dashboard.categories.delete', ['id' => $category->id]) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <button class="btn btn-danger" @cannot('delete', $category) disabled="disabled" title="{{ __('messages.dashboard.categories.delete.disabled_button_information') }}" @endcannot type="submit">
+                                            <button class="btn btn-danger" @if ($category->articles_count > 0) disabled="disabled" title="{{ __('messages.dashboard.categories.delete.disabled_button_information') }}" @endif type="submit">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </button>
                                             @csrf

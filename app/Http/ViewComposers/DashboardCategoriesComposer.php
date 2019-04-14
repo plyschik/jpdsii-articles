@@ -11,8 +11,7 @@ class DashboardCategoriesComposer
     {
         $categories = Category::select(['id', 'name'])
             ->orderBy('name')
-            ->get()
-        ;
+            ->get();
 
         $view->with('categories', $categories);
     }

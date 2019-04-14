@@ -13,25 +13,23 @@ class ArticleRepository
         $this->model = $model;
     }
 
-    public function getArticle($id)
+    public function getArticle(int $id)
     {
         return $this->model
             ->select(['user_id', 'category_id', 'title', 'content', 'created_at'])
             ->with(['user:id,first_name,last_name', 'category:id,name'])
             ->where('id', $id)
-            ->firstOrFail()
-        ;
+            ->firstOrFail();
     }
 
-    public function getArticlesFromSearch($query)
+    public function getArticlesFromSearch(string $query)
     {
         return $this->model
             ->select(['id', 'title'])
             ->where('title', 'LIKE', "%{$query}%")
             ->orderByDesc('id')
             ->limit(config('site.limits.search.articles'))
-            ->get()
-        ;
+            ->get();
     }
 
     public function getArticlesList()
@@ -40,29 +38,26 @@ class ArticleRepository
             ->select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
             ->with(['user:id,first_name,last_name', 'category:id,name'])
             ->latest('id')
-            ->paginate(config('site.limits.articles'))
-        ;
+            ->paginate(config('site.limits.articles'));
     }
 
-    public function getArticlesFromCategory($id)
+    public function getArticlesFromCategory(int $id)
     {
         return $this->model
             ->select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
             ->with(['user:id,first_name,last_name', 'category:id,name'])
             ->where('category_id', $id)
             ->latest('id')
-            ->paginate(config('site.limits.articles'))
-        ;
+            ->paginate(config('site.limits.articles'));
     }
 
-    public function getArticlesFromAuthor($id)
+    public function getArticlesFromAuthor(int $id)
     {
         return $this->model
             ->select(['id', 'user_id', 'category_id', 'title', 'content', 'created_at'])
             ->with(['user:id,first_name,last_name', 'category:id,name'])
             ->where('user_id', $id)
             ->latest('id')
-            ->paginate(config('site.limits.articles'))
-        ;
+            ->paginate(config('site.limits.articles'));
     }
 }
